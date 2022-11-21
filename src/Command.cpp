@@ -6,6 +6,7 @@
 #include "ShuntingYardToken.hpp"
 #include "Command.hpp"
 #include "WhileLoop.hpp"
+#include "Parser.hpp"
 #include "Client.hpp"
 
 

@@ -3,7 +3,7 @@
 
 #include "Lexer.hpp"
 
-Lexer::Lexer(std::string& src)
+Lexer::Lexer(std::string &src)
 {
     m_program.open(src);
 }
@@ -11,7 +11,6 @@ Lexer::Lexer(std::string& src)
 std::vector<std::vector<std::string>> Lexer::doLexer()
 {
     std::vector<std::vector<std::string>> main_vector_arr;
-    std::vector<std::string> vec_str;
 
     if (!m_program.is_open()) {
         throw std::runtime_error("file not opened");
@@ -20,7 +19,7 @@ std::vector<std::vector<std::string>> Lexer::doLexer()
     std::string line;
     while (getline(m_program, line)) {
         std::vector<std::string> vec_words = splitByWord(line,' ');
-        main_vector_arr.push_back(vec_str);
+        main_vector_arr.push_back(vec_words);
     }
     m_program.close();
 
