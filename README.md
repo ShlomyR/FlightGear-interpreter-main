@@ -28,4 +28,6 @@ After the installation of the "flightgear"
 
 /usr/share/games/flightgear/Protocol
 
+sudo mv generic_small.xml /usr/share/games/flightgear/Protocol
+
 in the file directory of the project press make or make run and enjoy !!!
