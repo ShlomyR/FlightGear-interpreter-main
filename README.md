@@ -1,4 +1,4 @@
-# FlitheGear-Interpeter
+# FlightGear-Interpeter
 
 this is a learning project of c++ from scratch and OOP and command pattern.
 
