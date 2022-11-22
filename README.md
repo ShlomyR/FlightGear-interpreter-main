@@ -10,10 +10,7 @@ sudo add-apt-repository ppa:saiarcot895/flightgear
 
 sudo apt update
 
-After the installation go to the ubuntu software (store) and download "flightgear"
-![test22](https://user-images.githubusercontent.com/91196585/176131525-8a77cf74-e70d-4547-866a-7f1402bab7a0.jpeg)
-
-(the one in the middle)
+sudo apt install flightgear
 
 After the installation of the "flightgear"
 
