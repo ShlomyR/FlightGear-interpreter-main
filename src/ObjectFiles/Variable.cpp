@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "Variable.hpp"
-#include "SymbleVar.hpp"
+#include "../HeaderFiles/Variable.hpp"
+#include "../HeaderFiles/SymbleVar.hpp"
 
 Variable* Variable::instance = 0;
 Variable* Variable::getInstance()

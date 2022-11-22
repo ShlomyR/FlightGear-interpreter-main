@@ -1,5 +1,5 @@
-#include "WhileLoop.hpp"
-#include "Parser.hpp"
+#include "../HeaderFiles/WhileLoop.hpp"
+#include "../HeaderFiles/Parser.hpp"
 
 
 Parser parser;

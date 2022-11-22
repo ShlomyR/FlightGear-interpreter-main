@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "SymbleVar.hpp"
+#include "../HeaderFiles/SymbleVar.hpp"
 
 
 SymbolVar* SymbolVar::instance = 0;

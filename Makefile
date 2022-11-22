@@ -5,7 +5,7 @@ TARGET = FS_interpater
 RUN = ./$(TARGET)
 
 # directory for your source files
-SRC_DIR = src
+SRC_DIR = src/ObjectFiles
 
 # directory for your object files
 BUILD_DIR = bin

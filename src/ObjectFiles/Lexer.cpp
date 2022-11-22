@@ -1,7 +1,7 @@
 #include <sstream>
 #include <iostream>
 
-#include "Lexer.hpp"
+#include "../HeaderFiles/Lexer.hpp"
 
 Lexer::Lexer(std::string &src)
 {

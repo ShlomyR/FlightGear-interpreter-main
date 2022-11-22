@@ -1,5 +1,5 @@
-#include "Parser.hpp"
-#include "Lexer.hpp"
+#include "../HeaderFiles/Parser.hpp"
+#include "../HeaderFiles/Lexer.hpp"
 
 #define PATH "script/Script.txt"
 

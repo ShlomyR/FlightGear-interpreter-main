@@ -1,9 +1,9 @@
 #include <arpa/inet.h>
 #include <iostream>
 
-#include "Client.hpp"
-#include "Parser.hpp"
-#include "Variable.hpp"
+#include "../HeaderFiles/Client.hpp"
+#include "../HeaderFiles/Parser.hpp"
+#include "../HeaderFiles/Variable.hpp"
 
 #define SET (std::string)"set"
 #define ACTIVATE (std::string)"\r\n"

@@ -4,7 +4,7 @@
 #include <netinet/in.h>
 #include <unistd.h>
 
-#include "Server.hpp"
+#include "../HeaderFiles/Server.hpp"
 
 
 Server* Server::instance = 0;
