@@ -6,8 +6,7 @@
             "command": "/usr/bin/g++",
             "args": [
                 "-g",
-                "${workspaceFolder}/src/*.cpp",
-                //"${workspaceFolder}/cpp/07-class-template/src/main.cpp",
+                "${workspaceFolder}/src/ObjectFiles/*.cpp",
                 "-o",
                 "${workspaceFolder}/FS_interpater",
                 "-pthread"
