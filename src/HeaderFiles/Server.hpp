@@ -12,24 +12,22 @@ using namespace std;
 
 class Server
 {
-private:
-	static Server* instance;
-    std::string readData(std::string msg);
-    std::vector<double> getValVector(std::string str);
-    static void runServerDB();
-    static void runFG();
-    void makeBindArray();
+    public:
+        static void endFG();
+        std::string bind_arr[36];
+        
+        int connectServer(int port);
+        static Server* getInstance();
+    private:
+        static Server* instance;
+        std::string readData(std::string msg);
+        std::vector<double> getValVector(std::string str);
+        static void runServerDB();
+        static void runFG();
+        void makeBindArray();
 
-    std::thread t1;
-    std::thread t2;
-    
-public:
-    static void endFG();
-    std::string bind_arr[36];
-	
-	int connectServer(int port);
-    static Server* getInstance();
-
+        std::thread t1;
+        std::thread t2;
 };
 
 enum vars {

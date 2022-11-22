@@ -5,11 +5,9 @@
 
 class Command
 {
-public:
-    
-    virtual int DoCommand(std::vector<std::string> &line) = 0;
-    virtual ~Command(){};
-    
+    public:
+        virtual int DoCommand(std::vector<std::string> &line) = 0;
+        virtual ~Command(){};
 };
 
 #include "Command.hxx"

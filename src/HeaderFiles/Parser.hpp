@@ -11,7 +11,6 @@ class Parser
 public:
     Parser();
     ~Parser(); 
-    
     void parse(std::vector<std::vector<std::string>> &);
     static std::vector<std::vector<std::string>> vector_commands;
     static std::vector<std::vector<std::string>> vector_all_lines;
