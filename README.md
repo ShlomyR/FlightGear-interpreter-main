@@ -7,6 +7,7 @@ this is a learning project of c++ from scratch and OOP and command pattern.
 **first install this in the command line:**
 
 sudo add-apt-repository ppa:saiarcot895/flightgear
+
 sudo apt update
 
 After the installation go to the ubuntu software (store) and download "flightgear"
