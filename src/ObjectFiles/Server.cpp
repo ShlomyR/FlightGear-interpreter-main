@@ -24,6 +24,11 @@ void Server::runFG()
     system("fgfs --telnet=socket,in,10,127.0.0.1,5402,tcp --generic=socket,out,10,127.0.0.1,5400,tcp,generic_small");
 }
 
+void Server::endFG()
+{  
+    system("\nkill $(pidof fgfs)\r\n ");
+}
+
 int Server::connectServer(int port)
 {
     Server::getInstance()->makeBindArray();

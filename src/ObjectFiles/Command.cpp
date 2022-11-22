@@ -3,6 +3,7 @@
 #include "../HeaderFiles/Command.hpp"
 #include "../HeaderFiles/Parser.hpp"
 #include "../HeaderFiles/Client.hpp"
+#include "../HeaderFiles/CommandDefinition.hpp"
 
 
 int OpenServerCommand::DoCommand(std::vector<std::string> &line)
@@ -37,7 +38,7 @@ int VerCommand::DoCommand(std::vector<std::string> &line)
 {
     std::vector<std::string> var_arr;
     
-    for (std::string::size_type i = 1; i < line[Parser::index].size(); i++)
+    for (std::string::size_type i = 1; i < line.size(); i++)
     {
         var_arr.push_back(line[i]);
     }
@@ -48,30 +49,27 @@ int VerCommand::DoCommand(std::vector<std::string> &line)
 
 int EqualMapCommand::DoCommand(std::vector<std::string> &line)
 {
-    if (line[Parser::index].size() == 3) {
+    if (line.size() == 3) {
         Client::getInstance()->SendVal(line,line[2]);
     }
     else {
-        //updateFromDB(line);
+       updateFromDB(line);
     }
 
     return 0;
 }
 
-#include "../HeaderFiles/CommandDefinition/EqualMapCommand.hpp"
 
-
-int WhileCommand::DoCommand(std::vector<std::string> &line)
+int WhileCommand::DoCommand(std::vector<std::string> &)
 {
     
-    int skip_row = skipRows(line,Parser::index);
+    int skip_row = skipRows(Parser::vector_all_lines,Parser::index);
     
-    // WhileLoop::whileLoop(line);
+    WhileLoop::whileLoop();
     
     return skip_row;
 }
 
-#include "../HeaderFiles/CommandDefinition/WhileCommand.hpp"
 
 int SleepCommand::DoCommand(std::vector<std::string> &line)
 {
@@ -80,17 +78,16 @@ int SleepCommand::DoCommand(std::vector<std::string> &line)
     return 0;
 }
 
-#include "../HeaderFiles/CommandDefinition/SleepCommand.hpp"
 
 int PrintCommand::DoCommand(std::vector<std::string> &line)
 {
     if (line.size() > 2) {
-        string val = " "; 
+        std::string val = " "; 
         for (string::size_type i = 1; i < line.size(); i++) {
             val+=  line[i]+" ";
 
         }
-        cout << "\n" << val << "\n";
+        std::cout << "\n" << val << "\n";
          
     }
     else {
@@ -99,5 +96,3 @@ int PrintCommand::DoCommand(std::vector<std::string> &line)
 
     return 0;
 }
-
-#include "../HeaderFiles/CommandDefinition/PrintCommand.hpp"

@@ -14,6 +14,7 @@ public:
     
     void parse(std::vector<std::vector<std::string>> &);
     static std::vector<std::vector<std::string>> vector_commands;
+    static std::vector<std::vector<std::string>> vector_all_lines;
     static std::string::size_type index;
 private:
     std::unordered_map<std::string,Command*> command_map;

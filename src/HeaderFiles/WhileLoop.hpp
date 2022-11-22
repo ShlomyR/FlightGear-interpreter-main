@@ -8,8 +8,8 @@ class WhileLoop
 private:
     static void pushToVec(std::vector<std::vector<std::string>> &arr,int i);
 public:
-    static int whileLoop(std::vector<std::vector<std::string>> &arr);
+    static int whileLoop();
     static std::string infix_str;
-    static std::vector<std::vector<std::string>> copy_arr;
+    static std::vector<std::string> copy_line;
 
 };

@@ -1,5 +1,6 @@
 #include "../HeaderFiles/Parser.hpp"
 #include "../HeaderFiles/Lexer.hpp"
+#include "../HeaderFiles/Server.hpp"
 
 #define PATH "script/Script.txt"
 
@@ -24,4 +25,5 @@ int main(int argc, char *argv[])
     Parser parser;
     parser.parse(arr);
 
+    Server::endFG();
 }

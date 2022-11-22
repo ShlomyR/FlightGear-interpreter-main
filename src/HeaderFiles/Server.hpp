@@ -1,16 +1,10 @@
 #pragma once
 
-#include <sys/socket.h>
-#include <iostream>
-#include <netinet/in.h>
 #include <string.h>
 #include <vector>
-//#include <chrono>
 #include <thread>
 
-
 using namespace std;
-//using namespace std::chrono;
 
 #include "SymbleVar.hpp"
 
@@ -30,6 +24,7 @@ private:
     std::thread t2;
     
 public:
+    static void endFG();
     std::string bind_arr[36];
 	
 	int connectServer(int port);

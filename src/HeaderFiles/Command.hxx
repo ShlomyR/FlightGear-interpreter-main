@@ -28,9 +28,9 @@ class EqualMapCommand : public Command
 public:    
     int DoCommand(std::vector<std::string> &line) override;
 private:
-    void updateFromDB(std::vector<std::vector<std::string>> &arr);
-    void convertFromChToNum(std::vector<std::vector<std::string>> &arr);
-    void strToInfix(std::string::size_type i);
+    void updateFromDB(std::vector<std::string> &arr);
+    void convertFromChToNum(std::vector<std::string> &arr);
+    void strToInfix();
     void checkMinus();
 
 };
@@ -39,9 +39,9 @@ class WhileCommand : public Command
 {
 public:
     int DoCommand(std::vector<std::string> &line) override;
-    static double getVal(std::vector<std::vector<std::string>> &arr,int index);
+    static double getVal(std::vector<std::vector<std::string>> const&arr,int index);
 private:
-    int skipRows(std::vector<std::string> &arr,int index);
+    int skipRows(std::vector<std::vector<std::string>> const&arr,int index);
 
 };
 

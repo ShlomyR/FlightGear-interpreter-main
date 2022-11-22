@@ -105,7 +105,7 @@ std::deque<ShuntingYardToken> shuntingYard(const std::deque<ShuntingYardToken>& 
 
                             continue;
                         }
-
+                    
                         // @@ otherwise, exit.
                         break;
                     }
@@ -114,6 +114,10 @@ std::deque<ShuntingYardToken> shuntingYard(const std::deque<ShuntingYardToken>& 
                     stack.push_back(o1);
                 }
                 break;
+
+            // case ShuntingYardToken::Type::point: {
+
+            // }
 
             case ShuntingYardToken::Type::LeftParen:
                 // If token is left parenthesis, then push it onto the stack
@@ -134,16 +138,17 @@ std::deque<ShuntingYardToken> shuntingYard(const std::deque<ShuntingYardToken>& 
                         match = true;
                     }
 
-                    // Pop the left parenthesis from the stack,
-                    // but not onto the output queue.
-                    stack.pop_back();
-
                     if(!match && stack.empty()) {
                         // If the stack runs out without finding a left parenthesis,
                         // then there are mismatched parentheses.
                         printf("RightParen error (%s)\n", token.str.c_str());
                         return {};
                     }
+
+                    // Pop the left parenthesis from the stack,
+                    // but not onto the output queue.
+                    stack.pop_back();
+
                 }
                 break;
 
@@ -180,7 +185,7 @@ double ShuntingYardToken::shuntingYardF(std::string expr)
     std::string full_expr = zero_init + expr;
     
     std::vector<double> stack;
-
+    
     std::vector<std::string> expressions ={full_expr};
 
     for( std::string& expr : expressions)

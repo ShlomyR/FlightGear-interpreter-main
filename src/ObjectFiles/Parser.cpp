@@ -1,4 +1,5 @@
 #include "../HeaderFiles/Parser.hpp"
+#include "../HeaderFiles/Server.hpp"
 
 Parser::Parser()
 {
@@ -20,14 +21,20 @@ Parser::~Parser()
     delete command_map.at("while");
     delete command_map.at("print");
     delete command_map.at("sleep");
+    system(" ");
+    
+
 }
 
 std::vector<std::vector<std::string>> Parser::vector_commands;
+
+std::vector<std::vector<std::string>> Parser::vector_all_lines;
 
 std::string::size_type Parser::index;
 
 void Parser::parse(std::vector<std::vector<std::string>> &arr)
 {
+    Parser::vector_all_lines = arr;
     for (Parser::index = 0; Parser::index < arr.size(); Parser::index++)
     {
         Command *c;
@@ -39,6 +46,7 @@ void Parser::parse(std::vector<std::vector<std::string>> &arr)
         {
             c = command_map.at(arr[Parser::index][0]);
         }
-        Parser::index += c->DoCommand(arr[Parser::index]);
+        std::vector<std::string> line = arr[Parser::index];
+        Parser::index += c->DoCommand(line);
     }
 }

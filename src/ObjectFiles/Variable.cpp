@@ -1,4 +1,5 @@
 #include <iostream>
+#include <unistd.h>
 
 #include "../HeaderFiles/Variable.hpp"
 #include "../HeaderFiles/SymbleVar.hpp"
@@ -23,6 +24,7 @@ void Variable::printMap(std::unordered_map<K, V> const &m)
 
 void Variable::createVar(std::vector<std::string> var_arr)
 {   
+    //sleep(50);
     if (var_arr[2] == "bind")
     {
         Variable::getInstance()->base_map_DB.insert({var_arr[0],var_arr[3]});

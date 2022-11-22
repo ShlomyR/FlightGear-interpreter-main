@@ -10,8 +10,11 @@ sudo add-apt-repository ppa:saiarcot895/flightgear
 
 sudo apt update
 
+<<<<<<< HEAD
 sudo apt install flightgear
 
+=======
+>>>>>>> 8dd966d (1.0)
 After the installation of the "flightgear"
 
 **put those lines in the setting:**
@@ -27,4 +30,8 @@ After the installation of the "flightgear"
 
 sudo mv generic_small.xml /usr/share/games/flightgear/Protocol
 
+<<<<<<< HEAD
 in the file directory of the project press make or make run and enjoy !!!
+=======
+in the file directory of the project press make or make run and enjoy !!!
+>>>>>>> 8dd966d (1.0)
