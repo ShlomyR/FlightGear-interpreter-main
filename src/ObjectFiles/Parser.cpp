@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "../HeaderFiles/Parser.hpp"
 #include "../HeaderFiles/Server.hpp"
 
@@ -35,18 +37,43 @@ std::string::size_type Parser::index;
 void Parser::parse(std::vector<std::vector<std::string>> &arr)
 {
     Parser::vector_all_lines = arr;
-    for (Parser::index = 0; Parser::index < arr.size(); Parser::index++)
+    Parser::setIndex();
+    for (Parser::getIndex() ; Parser::getIndex() < arr.size(); Parser::incrementIndex())
     {
         Command *c;
-        if (arr[Parser::index][1] == "=")
-        {
-            c = command_map.at(arr[Parser::index][1]);
+        if (arr[Parser::getIndex()][1] == "=") {
+            c = command_map.at(arr[Parser::getIndex()][1]);
         }
-        else
-        {
-            c = command_map.at(arr[Parser::index][0]);
+        else {
+            c = command_map.at(arr[Parser::getIndex()][0]);
         }
-        std::vector<std::string> line = arr[Parser::index];
+        std::vector<std::string> line = arr[Parser::getIndex()];
         Parser::index += c->DoCommand(line);
+    }
+}
+
+std::vector<std::vector<std::string>> Parser::getVecCommand()
+{
+    return vector_commands;
+}
+
+std::vector<std::vector<std::string>> Parser::getVecAll()
+{
+    return vector_all_lines;
+}
+
+std::string::size_type Parser::getIndex()
+{
+    return index;
+}
+
+void Parser::printVec(std::vector<std::vector<std::string>> const& vec_arr)
+{
+    for (std::string::size_type i = 0; i < vec_arr.size(); i++) {
+        std::cout << "[";
+        for (std::string::size_type j = 0; j < vec_arr[i].size(); j++) {
+            std::cout << vec_arr[i][j] << " ";
+        }
+        std::cout << "]" << "\n";
     }
 }

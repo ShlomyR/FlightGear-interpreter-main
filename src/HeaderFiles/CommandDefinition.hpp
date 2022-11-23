@@ -5,8 +5,7 @@
 #include "WhileLoop.hpp"
 #include "Parser.hpp"
 #include "Client.hpp"
-#include "Variable.hpp"
-#include "SymbleVar.hpp"
+#include "SymbolVar.hpp"
 #include "ShuntingYardToken.hpp"
 
 
@@ -33,13 +32,13 @@ void EqualMapCommand::convertFromChToNum(std::vector<std::string> &line)
     std::string s;
 
     for (std::string::size_type i = 0; i < line.size(); i++) {
-        for (std::string::size_type j = 0; j < Variable::getInstance()->vec_all_vars.size(); j++) {
-            if (line[i] == Variable::getInstance()->vec_all_vars[j] && line[0] != Variable::getInstance()->vec_all_vars[j]) {
+        for (std::string::size_type j = 0; j < SymbolVar::getInstance()->vec_all_vars.size(); j++) {
+            if (line[i] == SymbolVar::getInstance()->vec_all_vars[j] && line[0] != SymbolVar::getInstance()->vec_all_vars[j]) {
                 if (line[i] == "h0") {
                     d = SymbolVar::getInstance()->data_base.at(WhileLoop::copy_line[i]);
                 }
                 else {
-                    d = SymbolVar::getInstance()->data_base.at(Variable::getInstance()->base_map_DB.at(WhileLoop::copy_line[i]));
+                    d = SymbolVar::getInstance()->data_base.at(SymbolVar::getInstance()->base_map_DB.at(WhileLoop::copy_line[i]));
                 }
                 dtoi = d;
                 s = std::to_string(dtoi);
@@ -68,30 +67,6 @@ void EqualMapCommand::checkMinus()
     }
 }
 
-
-void PrintCommand::printFunc(std::string val)
-{
-    std::string val_name = val;
-
-    for (std::string::size_type i = 0; i < Variable::getInstance()->vec_all_vars.size(); i++) {
-        if (val == Variable::getInstance()->vec_all_vars[i]) {
-            double val_d = SymbolVar::getInstance()->data_base.at(Variable::getInstance()->base_map_DB.at(val));
-            std::cout << val_name << ": " << val_d << "\n";
-        }
-    }
-    if (val[0] == '"') {    
-        std::cout << "\n" << val << "\n";   
-    }
-
-}
-
-
-void SleepCommand::sleepFunc(std::string val)
-{
-    std::cout << "\nSleeping for " << val << " seconds" << "\n"; 
-    sleep(stoi(val));
-}
-
 int WhileCommand::skipRows(std::vector<std::vector<std::string>> const& arr,int index)
 { 
     int row_index = index+1;
@@ -106,9 +81,31 @@ int WhileCommand::skipRows(std::vector<std::vector<std::string>> const& arr,int 
 
 double WhileCommand::getVal(std::vector<std::vector<std::string>> const& arr,int i)
 {
-    std::string path = Variable::getInstance()->base_map_DB.at(arr[i][1]);
+    std::string path = SymbolVar::getInstance()->base_map_DB.at(arr[i][1]);
 
     double val = SymbolVar::getInstance()->data_base.at(path);
 
     return val;
+}
+
+void SleepCommand::sleepFunc(std::string val)
+{
+    std::cout << "\nSleeping for " << val << " seconds" << "\n"; 
+    sleep(stoi(val));
+}
+
+void PrintCommand::printFunc(std::string val)
+{
+    std::string val_name = val;
+
+    for (std::string::size_type i = 0; i < SymbolVar::getInstance()->vec_all_vars.size(); i++) {
+        if (val == SymbolVar::getInstance()->vec_all_vars[i]) {
+            double val_d = SymbolVar::getInstance()->data_base.at(SymbolVar::getInstance()->base_map_DB.at(val));
+            std::cout << val_name << ": " << val_d << "\n";
+        }
+    }
+    if (val[0] == '"') {    
+        std::cout << "\n" << val << "\n";   
+    }
+
 }

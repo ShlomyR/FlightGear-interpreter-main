@@ -6,7 +6,7 @@
 
 using namespace std;
 
-#include "SymbleVar.hpp"
+#include "SymbolVar.hpp"
 
 
 

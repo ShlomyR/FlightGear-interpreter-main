@@ -3,7 +3,7 @@
 
 #include "../HeaderFiles/Client.hpp"
 #include "../HeaderFiles/Parser.hpp"
-#include "../HeaderFiles/Variable.hpp"
+#include "../HeaderFiles/SymbolVar.hpp"
 
 #define SET (std::string)"set"
 #define ACTIVATE (std::string)"\r\n"
@@ -61,17 +61,18 @@ void Client::SendVal(std::vector<std::string> &arr,double infix)
 {
     std::string val = std::to_string(infix);
 
-   Client::getInstance()->Send(Set + " " + Variable::getInstance()->base_map_DB.at(arr[0]) + " " + val + Activate);  
+   Client::getInstance()->Send(Set + " " + SymbolVar::getInstance()->base_map_DB.at(arr[0]) + " " + val + Activate);  
 }
 
 void Client::SendVal(std::vector<std::vector<std::string>> &arr,double infix)
 {
+    Parser parser;
     std::string val = std::to_string(infix);
 
-   Client::getInstance()->Send(Set + " " + Variable::getInstance()->base_map_DB.at(arr[Parser::index][0]) + " " + val + Activate);  
+   Client::getInstance()->Send(Set + " " + SymbolVar::getInstance()->base_map_DB.at(arr[parser.getIndex()][0]) + " " + val + Activate);  
 }
 
 void Client::SendVal(std::vector<std::string> &arr,std::string val)
 {
-   Client::getInstance()->Send(Set + " " + Variable::getInstance()->base_map_DB.at(arr[0]) + " " + val + Activate);
+   Client::getInstance()->Send(Set + " " + SymbolVar::getInstance()->base_map_DB.at(arr[0]) + " " + val + Activate);
 }

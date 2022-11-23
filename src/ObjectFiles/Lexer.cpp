@@ -43,7 +43,7 @@ std::vector<std::string> Lexer::splitByWord(std::string const &str, const char D
     return vec_str;
 }
 
-void Lexer::printVec(std::vector<std::vector<std::string>> &vec_arr)
+void Lexer::printVec(std::vector<std::vector<std::string>> const& vec_arr)
 {
     for (std::string::size_type i = 0; i < vec_arr.size(); i++) {
         std::cout << "[";

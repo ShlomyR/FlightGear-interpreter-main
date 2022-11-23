@@ -7,7 +7,7 @@ class Command
 {
     public:
         virtual int DoCommand(std::vector<std::string> &line) = 0;
-        virtual ~Command(){};
+        virtual ~Command() = default;
 };
 
 #include "Command.hxx"

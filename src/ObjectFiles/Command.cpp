@@ -1,5 +1,4 @@
 #include "../HeaderFiles/Server.hpp"
-#include "../HeaderFiles/Variable.hpp"
 #include "../HeaderFiles/Command.hpp"
 #include "../HeaderFiles/Parser.hpp"
 #include "../HeaderFiles/Client.hpp"
@@ -38,11 +37,10 @@ int VerCommand::DoCommand(std::vector<std::string> &line)
 {
     std::vector<std::string> var_arr;
     
-    for (std::string::size_type i = 1; i < line.size(); i++)
-    {
+    for (std::string::size_type i = 1; i < line.size(); i++) {
         var_arr.push_back(line[i]);
     }
-    Variable::getInstance()->createVar(var_arr);
+    SymbolVar::getInstance()->createVar(var_arr);
     
     return 0;
 }
@@ -62,11 +60,9 @@ int EqualMapCommand::DoCommand(std::vector<std::string> &line)
 
 int WhileCommand::DoCommand(std::vector<std::string> &)
 {
-    
-    int skip_row = skipRows(Parser::vector_all_lines,Parser::index);
-    
+    Parser pars;
+    int skip_row = skipRows(pars.getVecAll(),pars.getIndex());
     WhileLoop::whileLoop();
-    
     return skip_row;
 }
 
@@ -74,7 +70,6 @@ int WhileCommand::DoCommand(std::vector<std::string> &)
 int SleepCommand::DoCommand(std::vector<std::string> &line)
 {
     sleepFunc(line[1]);
-
     return 0;
 }
 
@@ -88,11 +83,9 @@ int PrintCommand::DoCommand(std::vector<std::string> &line)
 
         }
         std::cout << "\n" << val << "\n";
-         
     }
     else {
         printFunc(line[1]);
     }
-
     return 0;
 }

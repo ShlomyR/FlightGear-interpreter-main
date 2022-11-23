@@ -1,5 +1,6 @@
 #include "../HeaderFiles/WhileLoop.hpp"
 #include "../HeaderFiles/Parser.hpp"
+#include "../HeaderFiles/Lexer.hpp"
 
 
 Parser parser;
@@ -9,18 +10,22 @@ std::vector<std::string> WhileLoop::copy_line;
 
 int WhileLoop::whileLoop()
 { 
+    std::vector<std::vector<std::string>> vec_all = parser.getVecAll();
+    std::vector<std::vector<std::string>> vec_command;
     double val_from_DB;
 
-    int temp_index = Parser::index;
+    int temp_index = parser.getIndex();
 
-    pushToVec(Parser::vector_all_lines,temp_index);
+    pushToVec(vec_all,temp_index);
+
  
-    while ((val_from_DB = WhileCommand::getVal(Parser::vector_all_lines,temp_index)) < stoi(Parser::vector_all_lines[temp_index][3])) {
-        parser.parse(parser.vector_commands);
+    while ((val_from_DB = WhileCommand::getVal(vec_all,temp_index)) < stoi(vec_all[temp_index][3])) {
+        vec_command = parser.getVecCommand();
+        parser.parse(vec_command);
     }
-    parser.vector_commands.clear();
-
-    parser.index = 0;
+    
+    parser.resetIndex();
+    parser.resetVecCommand();
     
     printf("\nWhileLoop Parser finished\n");
 
@@ -30,8 +35,11 @@ int WhileLoop::whileLoop()
 void WhileLoop::pushToVec(std::vector<std::vector<std::string>> &arr,int row)
 {
     row++;
+    std::vector<std::vector<std::string>> pp = parser.getVecCommand();
     while (arr[row][0] != "}") {
-        parser.vector_commands.push_back(arr[row]);
+        pp.push_back(arr[row]);
         row++;
     }
+    parser.setVecCommand(pp);
+    parser.printVec(pp);
 }
