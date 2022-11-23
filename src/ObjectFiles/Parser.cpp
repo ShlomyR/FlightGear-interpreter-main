@@ -66,14 +66,3 @@ std::string::size_type Parser::getIndex()
 {
     return index;
 }
-
-void Parser::printVec(std::vector<std::vector<std::string>> const& vec_arr)
-{
-    for (std::string::size_type i = 0; i < vec_arr.size(); i++) {
-        std::cout << "[";
-        for (std::string::size_type j = 0; j < vec_arr[i].size(); j++) {
-            std::cout << vec_arr[i][j] << " ";
-        }
-        std::cout << "]" << "\n";
-    }
-}

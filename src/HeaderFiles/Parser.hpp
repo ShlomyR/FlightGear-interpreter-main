@@ -18,23 +18,18 @@ public:
     void incrementIndex(){
         index++;
     }
-    void resetIndex()
-    {
+    void resetIndex() {
         index = 0;
     }
-    void setIndex()
-    {
+    void setIndex() {
         index = 0;
     }
-    void setVecCommand(std::vector<std::vector<std::string>> v)
-    {
+    void setVecCommand(std::vector<std::vector<std::string>> v) {
         vector_commands = v;
     }
-    void resetVecCommand()
-    {
+    void resetVecCommand() {
         vector_commands = {};
     }
-    void printVec(std::vector<std::vector<std::string>> const&);
 private:
     std::unordered_map<std::string,Command*> command_map;
     static std::vector<std::vector<std::string>> vector_commands;

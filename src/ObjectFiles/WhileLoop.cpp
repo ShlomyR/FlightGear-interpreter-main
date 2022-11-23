@@ -34,12 +34,11 @@ int WhileLoop::whileLoop()
 
 void WhileLoop::pushToVec(std::vector<std::vector<std::string>> &arr,int row)
 {
-    row++;
     std::vector<std::vector<std::string>> pp = parser.getVecCommand();
+    row++;
     while (arr[row][0] != "}") {
         pp.push_back(arr[row]);
         row++;
     }
     parser.setVecCommand(pp);
-    parser.printVec(pp);
 }
