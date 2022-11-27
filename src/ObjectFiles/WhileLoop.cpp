@@ -2,11 +2,6 @@
 #include "../HeaderFiles/Parser.hpp"
 #include "../HeaderFiles/Lexer.hpp"
 
-
-
-// std::string WhileLoop::infix_str;
-// std::vector<std::string> WhileLoop::copy_line;
-
 int WhileLoop::whileLoop(std::vector<std::string> &line)
 { 
     Parser parser;
