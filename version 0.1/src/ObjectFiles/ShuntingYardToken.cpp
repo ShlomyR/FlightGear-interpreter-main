@@ -6,8 +6,7 @@
 
 #include "../HeaderFiles/ShuntingYardToken.hpp"
 
-std::string ShuntingYardToken::infix_str;
-std::vector<std::string> ShuntingYardToken::copy_line;
+
 
 std::ostream& operator<<(std::ostream& os, const ShuntingYardToken& token)
 {
@@ -245,22 +244,4 @@ double ShuntingYardToken::shuntingYardF(std::string expr)
         }
     }
     return stack.back();
-}
-
-void ShuntingYardToken::strToInfix()
-{
-    std::string str_push_to_vec;
-    for (std::string::size_type j = 0; j < ShuntingYardToken::copy_line.size() - 2; j++) {
-        str_push_to_vec += ShuntingYardToken::copy_line[j + 2];
-    }
-    ShuntingYardToken::infix_str = str_push_to_vec;
-    str_push_to_vec.clear();
-}
-
-void ShuntingYardToken::checkMinus()
-{
-    if (ShuntingYardToken::infix_str[0] == '-' && ShuntingYardToken::infix_str[1] == '-' ) {
-        ShuntingYardToken::infix_str.erase(ShuntingYardToken::infix_str.begin()+1) ;
-        ShuntingYardToken::infix_str[0] = '+';
-    }
 }

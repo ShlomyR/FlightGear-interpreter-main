@@ -5,6 +5,9 @@
 #include "../HeaderFiles/Parser.hpp"
 #include "../HeaderFiles/SymbolVar.hpp"
 
+#define SET (std::string)"set"
+#define ACTIVATE (std::string)"\r\n"
+
 Client* Client::instance = 0;
 Client* Client::getInstance()
 {
@@ -18,7 +21,7 @@ int sock = 0, valread;
 std::string Set = "set";
 std::string Activate = "\r\n";
 
-int Client::connectClient(const int port,const char* ip)
+int Client::connectClient(int port,const char* ip)
 {
 	struct sockaddr_in serv_addr; 
 	
@@ -54,14 +57,22 @@ void Client::Send(std::string msg)
     std::cout << msg << "\n"; 
 }
 
-void Client::SendVal(std::vector<std::string> &line,double infix)
+void Client::SendVal(std::vector<std::string> &arr,double infix)
 {
     std::string val = std::to_string(infix);
 
-   Client::getInstance()->Send(Set + " " + SymbolVar::getInstance()->base_map_DB.at(line[0]) + " " + val + Activate);  
+   Client::getInstance()->Send(Set + " " + SymbolVar::getInstance()->base_map_DB.at(arr[0]) + " " + val + Activate);  
 }
 
-void Client::SendVal(std::vector<std::string> &line,std::string val)
+void Client::SendVal(std::vector<std::vector<std::string>> &arr,double infix)
 {
-   Client::getInstance()->Send(Set + " " + SymbolVar::getInstance()->base_map_DB.at(line[0]) + " " + val + Activate);
+    Parser parser;
+    std::string val = std::to_string(infix);
+
+   Client::getInstance()->Send(Set + " " + SymbolVar::getInstance()->base_map_DB.at(arr[parser.getIndex()][0]) + " " + val + Activate);  
+}
+
+void Client::SendVal(std::vector<std::string> &arr,std::string val)
+{
+   Client::getInstance()->Send(Set + " " + SymbolVar::getInstance()->base_map_DB.at(arr[0]) + " " + val + Activate);
 }

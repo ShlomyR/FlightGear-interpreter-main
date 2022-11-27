@@ -48,6 +48,7 @@ while alt < 940 {
     print alt
     sleep 1
 }
+print "done"
 while alt < 1100 {
     rudder = ( h0 - heading ) / 20
     aileron = - roll / 70
@@ -55,5 +56,12 @@ while alt < 1100 {
     print alt
     sleep 1
 }
-print "done"
+
+while alt < 1300 {
+    rudder = ( h0 - heading ) / 20
+    aileron = - roll / 70
+    elevator = pitch / 50
+    print alt
+    sleep 1
+}
 sleep 5
