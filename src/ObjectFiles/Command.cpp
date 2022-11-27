@@ -1,6 +1,7 @@
 #include "../HeaderFiles/Server.hpp"
 #include "../HeaderFiles/Command.hpp"
 #include "../HeaderFiles/Parser.hpp"
+#include "../HeaderFiles/Lexer.hpp"
 #include "../HeaderFiles/Client.hpp"
 #include "../HeaderFiles/CommandDefinition.hpp"
 
@@ -58,12 +59,15 @@ int EqualMapCommand::DoCommand(std::vector<std::string> &line)
 }
 
 
-int WhileCommand::DoCommand(std::vector<std::string> &)
+int WhileCommand::DoCommand(std::vector<std::string> &line)
 {
-    Parser pars;
-    int skip_row = skipRows(pars.getVecAll(),pars.getIndex());
-    WhileLoop::whileLoop();
-    return skip_row;
+    //Parser parser;
+    
+    // int skip_row = parser.getIndex();
+    // std::vector<std::vector<std::string>> p = Lexer::getVecPtr();
+    // skip_row += (p[0].size());//skipRows(Parser::getVecAll(),parser.getIndex());
+    WhileLoop::whileLoop(line);
+    return 0;
 }
 
 
@@ -89,3 +93,12 @@ int PrintCommand::DoCommand(std::vector<std::string> &line)
     }
     return 0;
 }
+
+// int UndefinedCommand::DoCommand(std::vector<std::string> &)
+// {
+//     // if (line[0] == " ") {
+//     //     return Parser::incrementIndex();
+//     // }
+//     Parser::incrementIndex();
+//     return Parser::getIndex();
+// }

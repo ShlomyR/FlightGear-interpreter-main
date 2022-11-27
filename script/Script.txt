@@ -41,7 +41,14 @@ print "let's fly"
 breaks = 0
 sleep 5
 throttle = 1
-while alt < 1000 {
+while alt < 940 {
+    rudder = ( h0 - heading ) / 20
+    aileron = - roll / 70
+    elevator = pitch / 50
+    print alt
+    sleep 1
+}
+while alt < 1100 {
     rudder = ( h0 - heading ) / 20
     aileron = - roll / 70
     elevator = pitch / 50

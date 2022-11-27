@@ -35,7 +35,7 @@ class WhileCommand : public Command
 {
     public:
         int DoCommand(std::vector<std::string> &line) override;
-        static double getVal(std::vector<std::vector<std::string>> const&arr,int index);
+        static double getVal(std::vector<std::string> const& line);
     private:
         int skipRows(std::vector<std::vector<std::string>> const&arr,int index);
 };
@@ -55,3 +55,10 @@ class PrintCommand : public Command
     private:
         void printFunc(std::string val);
 };
+
+// class UndefinedCommand : public Command
+// {
+//     public:
+//         int DoCommand(std::vector<std::string> &line) override;
+//     private:
+// };

@@ -79,9 +79,9 @@ int WhileCommand::skipRows(std::vector<std::vector<std::string>> const& arr,int 
     return row_index;  
 }
 
-double WhileCommand::getVal(std::vector<std::vector<std::string>> const& arr,int i)
+double WhileCommand::getVal(std::vector<std::string> const& line)
 {
-    std::string path = SymbolVar::getInstance()->base_map_DB.at(arr[i][1]);
+    std::string path = SymbolVar::getInstance()->base_map_DB.at(line[1]);
 
     double val = SymbolVar::getInstance()->data_base.at(path);
 

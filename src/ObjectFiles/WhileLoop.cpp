@@ -8,20 +8,21 @@ Parser parser;
 std::string WhileLoop::infix_str;
 std::vector<std::string> WhileLoop::copy_line;
 
-int WhileLoop::whileLoop()
+int WhileLoop::whileLoop(std::vector<std::string> &line)
 { 
-    std::vector<std::vector<std::string>> vec_all = parser.getVecAll();
-    std::vector<std::vector<std::string>> vec_command;
+    // std::vector<std::vector<std::string>> vec_all = parser.getVecAll();
+    // std::vector<std::vector<std::string>> vec_command;
     double val_from_DB;
 
-    int temp_index = parser.getIndex();
+    // int temp_index = parser.getIndex();
 
-    pushToVec(vec_all,temp_index);
+    // pushToVec(vec_all,temp_index);
 
  
-    while ((val_from_DB = WhileCommand::getVal(vec_all,temp_index)) < stoi(vec_all[temp_index][3])) {
-        vec_command = parser.getVecCommand();
-        parser.parse(vec_command);
+    while ((val_from_DB = WhileCommand::getVal(line)) < stoi(line[3])) {
+        //vec_command = parser.getVecCommand();
+        
+        parser.parse(Lexer::getVecPtr());
     }
     
     parser.resetIndex();
