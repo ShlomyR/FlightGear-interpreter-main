@@ -17,16 +17,16 @@ void EqualMapCommand::updateFromDB(std::vector<std::string> &line)
 
     ShuntingYardToken::checkMinus();
     
-    double infix = ShuntingYardToken::shuntingYardF(ShuntingYardToken::infix_str);
+    double infix = ShuntingYardToken::shuntingYardF(ShuntingYardToken::getInfix());
 
     Client::getInstance()->SendVal(line,infix);
     
-    ShuntingYardToken::infix_str.clear();
+    ShuntingYardToken::getInfix().clear();
 }
 
 void EqualMapCommand::convertFromChToNum(std::vector<std::string> &line)
 {
-    ShuntingYardToken::copy_line = line;
+    ShuntingYardToken::setCopy(line);
     double d = 0.0;
     int dtoi = 0;
     std::string s;
@@ -35,14 +35,14 @@ void EqualMapCommand::convertFromChToNum(std::vector<std::string> &line)
         for (std::string::size_type j = 0; j < SymbolVar::getInstance()->vec_all_vars.size(); j++) {
             if (line[i] == SymbolVar::getInstance()->vec_all_vars[j] && line[0] != SymbolVar::getInstance()->vec_all_vars[j]) {
                 if (line[i] == "h0") {
-                    d = SymbolVar::getInstance()->data_base.at(ShuntingYardToken::copy_line[i]);
+                    d = SymbolVar::getInstance()->data_base.at(ShuntingYardToken::getCopy()[i]);
                 }
                 else {
-                    d = SymbolVar::getInstance()->data_base.at(SymbolVar::getInstance()->base_map_DB.at(ShuntingYardToken::copy_line[i]));
+                    d = SymbolVar::getInstance()->data_base.at(SymbolVar::getInstance()->base_map_DB.at(ShuntingYardToken::getCopy()[i]));
                 }
                 dtoi = d;
                 s = std::to_string(dtoi);
-                ShuntingYardToken::copy_line[i] = s;
+                ShuntingYardToken::setCopy(s,i);
             }
         }
     }

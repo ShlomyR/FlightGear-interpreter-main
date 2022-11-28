@@ -10,19 +10,24 @@ public:
         RightParen,
     };
     
-    ShuntingYardToken(Type t, const std::string& s, int prec = -1, bool ra = false) 
-        : type { t }, str ( s ), precedence { prec }, rightAssociative { ra }
-        {}
+    ShuntingYardToken(Type t, const std::string& s, int prec, bool ra);
 
     const Type type;
     const std::string str;
     const int precedence;
     const bool rightAssociative;
+public:
     static double shuntingYardF(std::string expr);
-    static std::string infix_str;
-    static std::vector<std::string> copy_line;
     static void strToInfix();
     static void checkMinus();
+public:
+    static std::string getInfix();
+    static std::vector<std::string> getCopy();
+    static void setInfix(std::string);
+    static void setCopy(std::vector<std::string>);
+    static void setCopy(std::string v,int i);
 private:
+    static std::string infix_str;
+    static std::vector<std::string> copy_line;
     
 };
