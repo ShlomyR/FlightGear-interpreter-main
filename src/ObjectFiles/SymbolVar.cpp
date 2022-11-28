@@ -21,7 +21,7 @@ std::unordered_map<std::string,double> SymbolVar::creatDataBaseMap(std::string k
     return SymbolVar::getInstance()->data_base;    
 }
 
-void SymbolVar::createVar(std::vector<std::string> var_arr)
+void SymbolVar::createVar(std::vector<std::string> const var_arr)
 {   
     if (var_arr[2] == "bind") {
         SymbolVar::getInstance()->base_map_DB.insert({var_arr[0],var_arr[3]});
@@ -33,7 +33,7 @@ void SymbolVar::createVar(std::vector<std::string> var_arr)
     }   
 }
 
-void SymbolVar::getVarValue(std::vector<std::string> var_arr)
+void SymbolVar::getVarValue(std::vector<std::string> const var_arr)
 {          
     SymbolVar::getInstance()->data_base[var_arr[0]];
     SymbolVar::getInstance()->data_base.at(var_arr[0]) = SymbolVar::getInstance()->data_base.at(SymbolVar::getInstance()->base_map_DB.at(var_arr[2]));

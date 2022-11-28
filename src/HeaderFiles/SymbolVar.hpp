@@ -14,12 +14,12 @@ class SymbolVar
         std::vector<std::string>  vec_all_vars;
     public:
         std::unordered_map<std::string,double> creatDataBaseMap(std::string key,double const& val);
-        void createVar(std::vector<std::string> var_arr);
+        void createVar(std::vector<std::string> const);
     private:
         SymbolVar();
         static SymbolVar* instance;
     private:
-        void getVarValue(std::vector<std::string> var_arr);
+        void getVarValue(std::vector<std::string> const);
         template<typename K, typename V>
         void printMap(std::unordered_map<K, V> const& m);
 };
