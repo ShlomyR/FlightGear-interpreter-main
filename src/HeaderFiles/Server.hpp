@@ -4,28 +4,23 @@
 #include <vector>
 #include <thread>
 
-using namespace std;
-
-#include "SymbolVar.hpp"
-
-
-
 class Server
 {
     public:
-        static void endFG();
-        std::string bind_arr[36];
-        
-        int connectServer(int port);
         static Server* getInstance();
+        std::string bind_arr[36];
+    public:
+        static void endFG();
+        int connectServer(int const);
     private:
         static Server* instance;
-        std::string readData(std::string msg);
-        std::vector<double> getValVector(std::string str);
+    private:
+        std::string readData(std::string const);
+        std::vector<double> getValVector(std::string);
         static void runServerDB();
         static void runFG();
         void makeBindArray();
-
+    private:
         std::thread t1;
         std::thread t2;
 };

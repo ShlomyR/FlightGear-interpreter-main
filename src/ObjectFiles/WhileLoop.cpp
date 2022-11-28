@@ -2,7 +2,7 @@
 #include "../HeaderFiles/Parser.hpp"
 #include "../HeaderFiles/Lexer.hpp"
 
-int WhileLoop::whileLoop(std::vector<std::string> &line)
+int WhileLoop::whileLoop(std::vector<std::string> const&line)
 { 
     Parser parser;
     std::vector<std::vector<std::string>> vec_vec_str = Lexer::getVecVecVec()[0];

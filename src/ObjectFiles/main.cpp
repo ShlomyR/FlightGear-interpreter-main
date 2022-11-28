@@ -25,5 +25,5 @@ int main(int argc, char *argv[])
     Parser parser;
     parser.parse(arr);
 
-    Server::endFG();
+    Server::getInstance()->endFG();
 }

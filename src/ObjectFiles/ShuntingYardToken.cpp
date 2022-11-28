@@ -219,7 +219,7 @@ std::deque<ShuntingYardToken> shuntingYard(const std::deque<ShuntingYardToken> &
     return queue;
 }
 
-double ShuntingYardToken::shuntingYardF(std::string expr)
+double ShuntingYardToken::shuntingYardF(std::string const expr)
 {
     std::string zero_init = "0";
 

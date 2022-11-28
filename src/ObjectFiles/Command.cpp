@@ -1,12 +1,13 @@
+#include <iostream>
+
 #include "../HeaderFiles/Server.hpp"
-#include "../HeaderFiles/Command.hpp"
 #include "../HeaderFiles/Parser.hpp"
-#include "../HeaderFiles/Lexer.hpp"
 #include "../HeaderFiles/Client.hpp"
 #include "../HeaderFiles/CommandDefinition.hpp"
+#include "../HeaderFiles/WhileLoop.hpp"
 
 
-int OpenServerCommand::DoCommand(std::vector<std::string> &line)
+int OpenServerCommand::DoCommand(std::vector<std::string> const&line)
 {
     printf("Server Command\n");
     
@@ -19,9 +20,9 @@ int OpenServerCommand::DoCommand(std::vector<std::string> &line)
     return 0;
 }
 
-int ConnectCommand::DoCommand(std::vector<std::string> &line)
+int ConnectCommand::DoCommand(std::vector<std::string> const&line)
 {
-    string ip;
+    std::string ip;
     int port;
    
     ip = line[1];
@@ -34,7 +35,7 @@ int ConnectCommand::DoCommand(std::vector<std::string> &line)
     return 0;
 }
 
-int VerCommand::DoCommand(std::vector<std::string> &line)
+int VerCommand::DoCommand(std::vector<std::string> const&line)
 {
     std::vector<std::string> var_arr;
     
@@ -46,7 +47,7 @@ int VerCommand::DoCommand(std::vector<std::string> &line)
     return 0;
 }
 
-int EqualMapCommand::DoCommand(std::vector<std::string> &line)
+int EqualMapCommand::DoCommand(std::vector<std::string> const&line)
 {
     if (line.size() == 3) {
         Client::getInstance()->SendVal(line,line[2]);
@@ -59,7 +60,7 @@ int EqualMapCommand::DoCommand(std::vector<std::string> &line)
 }
 
 
-int WhileCommand::DoCommand(std::vector<std::string> &line)
+int WhileCommand::DoCommand(std::vector<std::string> const&line)
 {
     int temp_row_num = Parser::getIndex()+1;
     WhileLoop::whileLoop(line);
@@ -67,18 +68,18 @@ int WhileCommand::DoCommand(std::vector<std::string> &line)
 }
 
 
-int SleepCommand::DoCommand(std::vector<std::string> &line)
+int SleepCommand::DoCommand(std::vector<std::string> const&line)
 {
     sleepFunc(line[1]);
     return 0;
 }
 
 
-int PrintCommand::DoCommand(std::vector<std::string> &line)
+int PrintCommand::DoCommand(std::vector<std::string> const&line)
 {
     if (line.size() > 2) {
         std::string val = " "; 
-        for (string::size_type i = 1; i < line.size(); i++) {
+        for (std::string::size_type i = 1; i < line.size(); i++) {
             val+=  line[i]+" ";
 
         }

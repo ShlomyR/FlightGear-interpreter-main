@@ -4,7 +4,11 @@
 #include <netinet/in.h>
 #include <unistd.h>
 
+#include <string.h>
+#include <vector>
+
 #include "../HeaderFiles/Server.hpp"
+#include "../HeaderFiles/SymbolVar.hpp"
 
 
 Server* Server::instance = 0;
@@ -29,7 +33,7 @@ void Server::endFG()
     system("\nkill $(pidof fgfs)\r\n ");
 }
 
-int Server::connectServer(int port)
+int Server::connectServer(int const port)
 {
     Server::getInstance()->makeBindArray();
 
@@ -83,7 +87,7 @@ int Server::connectServer(int port)
     return 0;
 }
 
-std::string Server::readData(std::string msg)
+std::string Server::readData(std::string const msg)
 {
     read(new_socket,(char*)msg.c_str(),msg.length());
 

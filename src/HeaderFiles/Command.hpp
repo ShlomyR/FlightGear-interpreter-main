@@ -6,7 +6,7 @@
 class Command
 {
     public:
-        virtual int DoCommand(std::vector<std::string> &line) = 0;
+        virtual int DoCommand(std::vector<std::string> const&) = 0;
         virtual ~Command() = default;
 };
 

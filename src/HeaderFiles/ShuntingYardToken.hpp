@@ -17,7 +17,7 @@ public:
     const int precedence;
     const bool rightAssociative;
 public:
-    static double shuntingYardF(std::string expr);
+    static double shuntingYardF(std::string const expr);
     static void strToInfix();
     static void checkMinus();
 public:

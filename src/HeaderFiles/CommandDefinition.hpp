@@ -1,15 +1,13 @@
 #include "iostream"
 #include <unistd.h>
 
-#include "Command.hxx"
-#include "WhileLoop.hpp"
-#include "Parser.hpp"
+#include "Command.hpp"
 #include "Client.hpp"
 #include "SymbolVar.hpp"
 #include "ShuntingYardToken.hpp"
 
 
-void EqualMapCommand::updateFromDB(std::vector<std::string> &line)
+void EqualMapCommand::updateFromDB(std::vector<std::string> const&line)
 {
     convertFromChToNum(line);
     
@@ -24,7 +22,7 @@ void EqualMapCommand::updateFromDB(std::vector<std::string> &line)
     ShuntingYardToken::getInfix().clear();
 }
 
-void EqualMapCommand::convertFromChToNum(std::vector<std::string> &line)
+void EqualMapCommand::convertFromChToNum(std::vector<std::string> const&line)
 {
     ShuntingYardToken::setCopy(line);
     double d = 0.0;
@@ -48,7 +46,7 @@ void EqualMapCommand::convertFromChToNum(std::vector<std::string> &line)
     }
 }
 
-double WhileCommand::getVal(std::vector<std::string> const& line)
+double WhileCommand::getVal(std::vector<std::string> const&line)
 {
     std::string path = SymbolVar::getInstance()->base_map_DB.at(line[1]);
 

@@ -4,7 +4,7 @@
 #include "../HeaderFiles/Lexer.hpp"
 
 
-std::vector<std::vector<std::vector<std::string>>> Lexer::vec_vec_vec_str;
+std::vector<std::vector<std::vector<std::string>>> Lexer::m_vec_vec_vec_str;
 
 
 Lexer::Lexer(std::string &src)
@@ -14,7 +14,7 @@ Lexer::Lexer(std::string &src)
 
 std::vector<std::vector<std::vector<std::string>>> &Lexer::getVecVecVec()
 {
-    return vec_vec_vec_str;
+    return m_vec_vec_vec_str;
 }
 
 std::vector<std::vector<std::string>> Lexer::doLexer()
@@ -87,14 +87,14 @@ std::vector<std::vector<std::string>> Lexer::pushLinesToVec(std::vector<std::vec
                     str = "";
                     i++;
                 }
-                vec_vec_vec_str.push_back(vec_vec_str);
+                m_vec_vec_vec_str.push_back(vec_vec_str);
                 vec_vec_str.clear();
                 str = "";
             }
         }
     }
 
-    printVec(vec_vec_vec_str[0]);
+    printVec(m_vec_vec_vec_str[0]);
     return vec_vec_str;
 }
 

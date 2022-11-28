@@ -42,26 +42,26 @@ int Client::connectClient(const int port,const char* ip)
     return 0;
 }
 
-void Client::testinClientConenction()
-{ 
-	Client::getInstance()->Send(Set + " controls/flight/rudder 1" + Activate);
-}
-
-void Client::Send(std::string msg)
+void Client::Send(std::string const& msg)
 {
 	send(sock , msg.c_str() , msg.length() , 0 );
 
     std::cout << msg << "\n"; 
 }
 
-void Client::SendVal(std::vector<std::string> &line,double infix)
+void Client::SendVal(std::vector<std::string> const&line,double infix)
 {
     std::string val = std::to_string(infix);
 
    Client::getInstance()->Send(Set + " " + SymbolVar::getInstance()->base_map_DB.at(line[0]) + " " + val + Activate);  
 }
 
-void Client::SendVal(std::vector<std::string> &line,std::string val)
+void Client::SendVal(std::vector<std::string> const&line,std::string val)
 {
    Client::getInstance()->Send(Set + " " + SymbolVar::getInstance()->base_map_DB.at(line[0]) + " " + val + Activate);
+}
+
+void Client::testinClientConenction()
+{ 
+	Client::getInstance()->Send(Set + " controls/flight/rudder 1" + Activate);
 }
