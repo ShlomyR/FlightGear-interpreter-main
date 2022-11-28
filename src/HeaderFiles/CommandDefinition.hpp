@@ -29,7 +29,7 @@ void EqualMapCommand::convertFromChToNum(std::vector<std::string> &line)
     ShuntingYardToken::setCopy(line);
     double d = 0.0;
     int dtoi = 0;
-    std::string s;
+    std::string str;
 
     for (std::string::size_type i = 0; i < line.size(); i++) {
         for (std::string::size_type j = 0; j < SymbolVar::getInstance()->vec_all_vars.size(); j++) {
@@ -41,8 +41,8 @@ void EqualMapCommand::convertFromChToNum(std::vector<std::string> &line)
                     d = SymbolVar::getInstance()->data_base.at(SymbolVar::getInstance()->base_map_DB.at(ShuntingYardToken::getCopy()[i]));
                 }
                 dtoi = d;
-                s = std::to_string(dtoi);
-                ShuntingYardToken::setCopy(s,i);
+                str = std::to_string(dtoi);
+                ShuntingYardToken::setCopy(str,i);
             }
         }
     }
