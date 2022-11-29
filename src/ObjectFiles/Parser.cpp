@@ -30,7 +30,6 @@ std::string::size_type Parser::m_index;
 
 void Parser::parse(std::vector<std::vector<std::string>> const&arr)
 {
-    //Parser::vector_all_lines = arr;
     Parser::resetIndex();
     for (Parser::getIndex(); Parser::getIndex() < arr.size(); Parser::incrementIndex()) {
         Command *c;
