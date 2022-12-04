@@ -33,8 +33,7 @@ void Parser::parse(std::vector<std::vector<std::string>> const&arr)
     Parser::resetIndex();
     for (Parser::getIndex(); Parser::getIndex() < arr.size(); Parser::incrementIndex()) {
         Command *c;
-        if (arr[Parser::getIndex()].empty() || arr[Parser::getIndex()][0] == " ") {//.size() == 0 || arr[Parser::getIndex()].size() == 1) {
-            printf("\nWhiteSpace was called+++++++++++++++++++++++++++++\n");
+        if (arr[Parser::getIndex()].empty() || arr[Parser::getIndex()][0] == " ") {
             continue;
         }
         if (arr[Parser::getIndex()][1] == "=") {
