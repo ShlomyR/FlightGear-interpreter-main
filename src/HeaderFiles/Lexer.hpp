@@ -10,7 +10,6 @@ class Lexer
 {
 public:
     Lexer(std::string &);
-    Lexer(char* src);
     static std::vector<std::vector<std::vector<std::string>>>& getVecVecVec();
     std::vector<std::vector<std::string>> doLexer();
     
