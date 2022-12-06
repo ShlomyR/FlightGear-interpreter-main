@@ -6,23 +6,23 @@
 
 class Server
 {
-    public:
-        static Server* getInstance();
-        std::string bind_arr[36];
-    public:
-        static void endFG();
-        int connectServer(int const);
-    private:
-        static Server* instance;
-    private:
-        std::string readData(std::string const);
-        std::vector<double> getValVector(std::string);
-        static void runServerDB();
-        static void runFG();
-        void makeBindArray();
-    private:
-        std::thread t1;
-        std::thread t2;
+public:
+    static Server* getInstance();
+    std::string bind_arr[36];
+public:
+    static void endFG();
+    int connectServer(int const);
+private:
+    static Server* instance;
+private:
+    std::string readData(std::string const);
+    std::vector<double> getValVector(std::string);
+    static void runServerDB();
+    static void runFG();
+    void makeBindArray();
+private:
+    std::thread t1;
+    std::thread t2;
 };
 
 enum vars {

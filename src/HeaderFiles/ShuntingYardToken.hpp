@@ -1,7 +1,8 @@
 #include <string>
 #include <vector>
 
-class ShuntingYardToken {
+class ShuntingYardToken
+{
 public:
     enum class Type {
         Unknown,

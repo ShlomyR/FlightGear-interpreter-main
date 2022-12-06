@@ -14,7 +14,7 @@ BUILD_DIR = bin
 CFLAGS = -std=c++11 -Wall -Wextra -lpthread
 
 # add libraries for your project here
-LDFLAGS = 
+LDFLAGS =
 
 # add library linker commands here (start with -l)
 LOADLIBS = 
@@ -23,7 +23,7 @@ LOADLIBS =
 LDLIBS = 
 
 # add include paths (start with -I)
-INC = 
+INC =
 
 # finds all your objects that corrispond to your .cpp files, system agnostic version
 OBJECTS := $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(wildcard $(SRC_DIR)/*.cpp))
@@ -56,6 +56,6 @@ run:
 # explains the only three options you should be using (unless you build more of your own)
 .PHONY: help
 help:
-	@echo "`make`       - builds/updates everything, is ready to run with `$(RUN)` after completion"
+	@echo "`make'       - builds/updates everything, is ready to run with `$(RUN)` after completion"
 	@echo "`make clean` - removes object file folder and executable"
 	@echo "`make run`   - builds/updates everything, runs immediately"

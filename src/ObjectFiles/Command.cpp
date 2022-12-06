@@ -51,8 +51,7 @@ int EqualMapCommand::DoCommand(std::vector<std::string> const&line)
 {
     if (line.size() == 3) {
         Client::getInstance()->SendVal(line,line[2]);
-    }
-    else {
+    } else {
        updateFromDB(line);
     }
 
@@ -84,8 +83,7 @@ int PrintCommand::DoCommand(std::vector<std::string> const&line)
 
         }
         std::cout << "\n" << val << "\n";
-    }
-    else {
+    } else {
         printFunc(line[1]);
     }
     return 0;

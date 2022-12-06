@@ -8,17 +8,13 @@ int main(int argc, char *argv[])
 {
     std::string file_name;
     
-    if(argc > 1) 
-    {
+    if(argc > 1) {
         file_name = argv[1];
-    }
-    
-    else
-    {
+    } else {
         file_name = PATH;
     }
     
-    Lexer lexer(file_name) ;
+    Lexer lexer(file_name);
 
     std::vector<std::vector<std::string>> arr = lexer.doLexer();
 

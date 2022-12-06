@@ -26,9 +26,7 @@ void SymbolVar::createVar(std::vector<std::string> const var_arr)
     if (var_arr[2] == "bind") {
         SymbolVar::getInstance()->base_map_DB.insert({var_arr[0],var_arr[3]});
         SymbolVar::getInstance()->vec_all_vars.push_back(SymbolVar::getInstance()->base_map_DB.find(var_arr[0])->first);
-    }
-    
-    else {
+    } else {
         getVarValue(var_arr);
     }   
 }

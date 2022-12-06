@@ -5,6 +5,6 @@
 
 class WhileLoop
 {
-    public:
-        static int whileLoop(std::vector<std::string> const&);
+public:
+    static int whileLoop(std::vector<std::string> const&);
 };

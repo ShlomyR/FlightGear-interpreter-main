@@ -35,15 +35,12 @@ void Parser::parse(std::vector<std::vector<std::string>> const&arr)
         Command *c;
         if (arr[Parser::getIndex()].empty() || arr[Parser::getIndex()][0] == " ") {
             continue;
-        }
-        if (arr[Parser::getIndex()][1] == "=") {
+        } else if (arr[Parser::getIndex()][1] == "=") {
             c = m_command_map.at(arr[Parser::getIndex()][1]);
-        }
-        else {
+        } else {
             c = m_command_map.at(arr[Parser::getIndex()][0]);
         }
-        std::vector<std::string> line = arr[Parser::getIndex()];
-        Parser::m_index += c->DoCommand(line);
+        Parser::m_index += c->DoCommand(arr[Parser::getIndex()]);
     }
 }
 
