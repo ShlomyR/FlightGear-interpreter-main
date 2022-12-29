@@ -13,11 +13,6 @@ ShuntingYardToken::ShuntingYardToken(Type t, const std::string &s, int prec = -1
     : type{t}, str(s), precedence{prec}, rightAssociative{ra}
 {}
 
-// std::ostream& operator<<(std::ostream &os, const ShuntingYardToken &token)
-// {
-//     os << token.str;
-//     return os;
-// }
 
 std::deque<ShuntingYardToken> exprToTokens(const std::string &expr)
 {

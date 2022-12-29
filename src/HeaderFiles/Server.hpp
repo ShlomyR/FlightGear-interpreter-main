@@ -13,14 +13,13 @@ public:
     static void endFG();
     int connectServer(int const);
 private:
-    static Server* instance;
-private:
     std::string readData(std::string const);
     std::vector<double> getValVector(std::string);
     static void runServerDB();
     static void runFG();
     void makeBindArray();
 private:
+    static Server* instance;
     std::thread t1;
     std::thread t2;
 };

@@ -1,10 +1,11 @@
 #include "iostream"
 #include <unistd.h>
 
-#include "Command.hpp"
-#include "Client.hpp"
-#include "SymbolVar.hpp"
-#include "ShuntingYardToken.hpp"
+#include "../HeaderFiles/Command.hpp"
+#include "../HeaderFiles/Client.hpp"
+#include "../HeaderFiles/SymbolVar.hpp"
+#include "../HeaderFiles/ShuntingYardToken.hpp"
+#include "../HeaderFiles/Parser.hpp"
 
 
 void EqualMapCommand::updateFromDB(std::vector<std::string> const&line)
@@ -55,6 +56,15 @@ double WhileCommand::getVal(std::vector<std::string> const&line)
     return val;
 }
 
+double WhileCommand::getVal(std::string const&line)
+{
+    std::string path = SymbolVar::getInstance()->base_map_DB.at(line);
+
+    double val = SymbolVar::getInstance()->data_base.at(path);
+
+    return val;
+}
+
 void SleepCommand::sleepFunc(std::string val)
 {
     std::cout << "\nSleeping for " << val << " seconds" << "\n"; 
@@ -74,4 +84,12 @@ void PrintCommand::printFunc(std::string val)
     if (val[0] == '"') {    
         std::cout << "\n" << val << "\n";   
     }
+}
+
+void BreakCommand::breakFunc(std::vector<std::string> const&line)
+{
+    std::cout << "\nBreakCommand was called: " << line[0] << "\n"; 
+    Parser::incrementIndex();
+    Parser::incrementIndex();
+    
 }

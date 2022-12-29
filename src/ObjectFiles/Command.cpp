@@ -3,8 +3,8 @@
 #include "../HeaderFiles/Server.hpp"
 #include "../HeaderFiles/Parser.hpp"
 #include "../HeaderFiles/Client.hpp"
-#include "../HeaderFiles/CommandDefinition.hpp"
 #include "../HeaderFiles/WhileLoop.hpp"
+#include "../HeaderFiles/SymbolVar.hpp"
 
 
 int OpenServerCommand::DoCommand(std::vector<std::string> const&line)
@@ -86,5 +86,11 @@ int PrintCommand::DoCommand(std::vector<std::string> const&line)
     } else {
         printFunc(line[1]);
     }
+    return 0;
+}
+
+int BreakCommand::DoCommand(std::vector<std::string> const&line)
+{
+    breakFunc(line);
     return 0;
 }

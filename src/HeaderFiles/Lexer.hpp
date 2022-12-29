@@ -12,7 +12,6 @@ public:
     Lexer(std::string &);
     static std::vector<std::vector<std::vector<std::string>>>& getVecVecVec();
     std::vector<std::vector<std::string>> doLexer();
-    
 private:
     std::vector<std::string> splitByWord(std::string const &, const char Delim);
     std::vector<std::vector<std::string>> pushLinesToVec(std::vector<std::vector<std::string>> const&);

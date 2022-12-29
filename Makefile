@@ -11,19 +11,19 @@ SRC_DIR = src/ObjectFiles
 BUILD_DIR = bin
 
 # add more CompilerFLAGS as your project requires
-CFLAGS = -std=c++11 -Wall -Wextra -lpthread
+CFLAGS = -std=c++11 -Wall -Wextra -lpthread -lsfml-graphics -lsfml-window -lsfml-system
 
 # add libraries for your project here
 LDFLAGS =
 
 # add library linker commands here (start with -l)
-LOADLIBS = 
+LOADLIBS =
 
 # add library search paths here (start with -L)
 LDLIBS = 
 
 # add include paths (start with -I)
-INC =
+INC = 
 
 # finds all your objects that corrispond to your .cpp files, system agnostic version
 OBJECTS := $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(wildcard $(SRC_DIR)/*.cpp))

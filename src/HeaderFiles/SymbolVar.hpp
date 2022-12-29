@@ -7,13 +7,12 @@
 class SymbolVar
 {
 public:
-    static SymbolVar* getInstance();
-public:
     std::unordered_map<std::string,double> data_base;
     std::unordered_map<std::string,std::string> base_map_DB;
     std::vector<std::string>  vec_all_vars;
 public:
     std::unordered_map<std::string,double> creatDataBaseMap(std::string key,double const& val);
+    static SymbolVar* getInstance();
     void createVar(std::vector<std::string> const);
 private:
     SymbolVar();

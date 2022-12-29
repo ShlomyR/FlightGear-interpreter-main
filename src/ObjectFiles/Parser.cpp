@@ -13,6 +13,7 @@ Parser::Parser()
     m_command_map["while"] = new WhileCommand();
     m_command_map["sleep"] = new SleepCommand();
     m_command_map["print"] = new PrintCommand();
+    m_command_map["brake"] = new BreakCommand();
 }
 
 Parser::~Parser()
@@ -24,6 +25,7 @@ Parser::~Parser()
     delete m_command_map.at("while");
     delete m_command_map.at("sleep");
     delete m_command_map.at("print");
+    delete m_command_map.at("brake");
 }
 
 std::string::size_type Parser::m_index;
