@@ -20,6 +20,7 @@ var rudder = bind /controls/flight/rudder
 var aileron = bind /controls/flight/aileron
 var elevator = bind /controls/flight/elevator
 var alt = bind /instrumentation/altimeter/indicated-altitude-ft
+var breakLoop = bind false
 sleep 35
 print "let's start"
 sleep 1
@@ -41,15 +42,9 @@ print "let's fly"
 breaks = 0
 sleep 5
 throttle = 1
-while alt < 300 {
-    rudder = ( h0 - heading ) / 20
-    aileron = - roll / 70
-    elevator = pitch / 50
-    print alt
-    sleep 1
-}
-print "done"
-while alt < 410 {
+
+while alt < 10
+{
     rudder = ( h0 - heading ) / 20
     aileron = - roll / 70
     elevator = pitch / 50
@@ -57,12 +52,28 @@ while alt < 410 {
     sleep 1
 }
 
-while alt == alt {
+print "First while loop done"
+
+while alt < 0
+{
     rudder = ( h0 - heading ) / 20
     aileron = - roll / 70
     elevator = pitch / 50
     print alt
     sleep 1
-    brake
 }
+
+print "Second while loop done"
+
+if alt > 100
+{
+    rudder = ( h0 - heading ) / 20
+    aileron = - roll / 70
+    elevator = pitch / 50
+    print alt
+    sleep 1
+}
+
+print "First if done"
+
 sleep 5
