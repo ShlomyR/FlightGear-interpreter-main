@@ -5,28 +5,31 @@ TARGET = FS_interpater
 RUN = ./$(TARGET)
 
 # directory for your source files
-SRC_DIR = src/ObjectFiles
+SRC_DIR = src/sourcefiles
+
+# directory for your heder files
+HEDER_DIR = src/hederfiles
 
 # directory for your object files
 BUILD_DIR = bin
 
 # add more CompilerFLAGS as your project requires
-CFLAGS = -std=c++11 -Wall -Wextra -lpthread -lsfml-graphics -lsfml-window -lsfml-system
+CFLAGS = -std=c++17 -Wall -O2 -Wextra 
 
 # add libraries for your project here
 LDFLAGS =
 
 # add library linker commands here (start with -l)
-LOADLIBS =
+LOADLIBS = -lpthread
 
 # add library search paths here (start with -L)
 LDLIBS = 
 
 # add include paths (start with -I)
-INC = 
+INC = -I $(HEDER_DIR)
 
 # finds all your objects that corrispond to your .cpp files, system agnostic version
-OBJECTS := $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(wildcard $(SRC_DIR)/*.cpp))
+OBJECTS := $(patsubst $(SRC_DIR)/%.cpp, $(BUILD_DIR)/%.o, $(wildcard $(SRC_DIR)/*.cpp)) main.cpp
 
 .PHONY: all
 # makes build directory, updates your objects, builds your executable
@@ -35,7 +38,7 @@ all:
 	+$(MAKE) $(TARGET)
 
 # updates your objects, builds your executable
-$(TARGET): $(OBJECTS)
+$(TARGET): $(OBJECTS) $(HEDER_DIR)/*.hpp
 	$(CXX) $(OBJECTS) $(CFLAGS) -o $@ $(LOADLIBS) $(LDFLAGS) $(LDLIBS) $(INC)
 
 # builds your objects
@@ -56,6 +59,6 @@ run:
 # explains the only three options you should be using (unless you build more of your own)
 .PHONY: help
 help:
-	@echo "`make'       - builds/updates everything, is ready to run with `$(RUN)` after completion"
-	@echo "`make clean` - removes object file folder and executable"
-	@echo "`make run`   - builds/updates everything, runs immediately"
+	@echo "make       - builds/updates everything, is ready to run with '$(RUN)' after completion"
+	@echo "make clean - removes object file folder and executable"
+	@echo "make run   - builds/updates everything, runs immediately"
