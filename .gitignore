@@ -1,8 +1,15 @@
-ff.cpp
 FS_interpater
+solid_test
+main
+
+ff.cpp
+main.cpp
+test.cpp
+MyClass.hpp
+
 /bin
-/version_0.1
-/version_0.2
+/others/version_0.1
+/others/version_0.2
 /12-expressions
 
 # Prerequisites
