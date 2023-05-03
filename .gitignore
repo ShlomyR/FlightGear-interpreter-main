@@ -5,10 +5,16 @@ main
 
 ff.cpp
 main.cpp
-#!others/test/main.cpp
+!others/test/main.cpp
 test.cpp
 MyClass.hpp
 .txt
+
+Makefile
+!others/test/Makefile
+
+script/
+!others/test/script
 
 /bin
 /others/test/bin
