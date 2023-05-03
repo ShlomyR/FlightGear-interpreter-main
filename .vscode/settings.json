@@ -89,9 +89,11 @@
         "variant": "cpp"
     },
     "cSpell.words": [
+        "clilen",
         "dtoi",
         "fgfs",
         "flightgear",
+        "newsockfd",
         "pidof",
         "valread"
     ]

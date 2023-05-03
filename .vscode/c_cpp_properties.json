@@ -1,0 +1,50 @@
+// {
+//     "configurations": [
+//         {
+//             "name": "Linux",
+//             "includePath": [
+//                 "${workspaceFolder}/**",
+//                 "${workspaceFolder}/others/test/src/hederfiles",
+//                 "${workspaceFolder}",
+//                 "${workspaceFolder}"
+//             ],
+//             "defines": [],
+//             "compilerPath": "/usr/bin/gcc",
+//             "cStandard": "c17",
+//             "cppStandard": "gnu++17",
+//             "intelliSenseMode": "linux-gcc-x64",
+//             "configurationProvider": "ms-vscode.makefile-tools"
+//         },
+//         {
+//             "name": "path",
+//             "includePath": [
+//                 "/home/shlomy/Desktop/FlightGear-interpreter-main/**"
+//             ],
+//             "defines": [],
+//             "compilerPath": "/usr/bin/g++ others/test/src",
+//             "cStandard": "c17",
+//             "cppStandard": "gnu++17",
+//             "intelliSenseMode": "linux-gcc-x64",
+//             "compilerPathInCppPropertiesJson": "/usr/bin/g++",
+//             "mergeConfigurations": false,
+//             "browse": {
+//                 "path": [
+//                     "${workspaceFolder}/**"
+//                 ],
+//                 "limitSymbolsToIncludedHeaders": true
+//             }
+//         },
+//         {
+//             "name": "p",
+//             "includePath": [
+//                 "${workspaceFolder}/**"
+//             ],
+//             "defines": [],
+//             "compilerPath": "/usr/bin/gcc",
+//             "cStandard": "c17",
+//             "cppStandard": "gnu++17",
+//             "intelliSenseMode": "linux-gcc-x64"
+//         }
+//     ],
+//     "version": 4
+// }
