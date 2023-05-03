@@ -8,9 +8,9 @@ test.cpp
 MyClass.hpp
 .txt
 
-bin/
-others/version_0.1/
-others/version_0.2/
+/bin
+**/version_0.1
+**/version_0.2
 others/12-expressions/
 
 # Prerequisites
