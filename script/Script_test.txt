@@ -35,3 +35,11 @@ while 20 < 30
 }
 
 print "Fourth while loop done"
+
+if 200 > 100
+{
+    print alt
+    sleep 1
+}
+
+print "First if done"
