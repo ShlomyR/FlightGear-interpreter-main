@@ -1,4 +1,3 @@
-#include "src/hederfiles/StdFileReader.hpp"
 #include "src/hederfiles/FlightGear.hpp"
 #include "src/hederfiles/Lexer.hpp"
 #include "src/hederfiles/Parse.hpp"
@@ -15,11 +14,8 @@ int main(int argc, char *argv[])
         file_name = PATH;
     }
 
-    StdFileReader fileReader;
-    Lexer lexer(fileReader, file_name);
-
-    
-    auto Lines_blocks = lexer.tokenize_file(" ");
+    Lexer lexer(file_name);
+    auto Lines_blocks = lexer.tokenize_file();
 
     Parse parse;
     parse.parse(Lines_blocks);
