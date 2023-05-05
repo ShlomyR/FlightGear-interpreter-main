@@ -95,6 +95,7 @@
         "flightgear",
         "newsockfd",
         "pidof",
+        "speedbrake",
         "valread"
     ]
 }
