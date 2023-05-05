@@ -13,14 +13,15 @@ class AssignmentCommand : public Command
 public:    
     void DoCommand(std::vector<std::string> const&) override;
 private:
-    void updateFromDB(std::vector<std::string> const&);
+    void updateVariableFromDB(std::vector<std::string> const&);
     void updateValuesFromDB(std::vector<std::string> const&);
-    void incrementOrDecrement(const std::string&, int);
+    void incrementOrDecrementVariable(const std::string&, int);
     double shuntingYard();
     std::string inputString();
 private:
-    std::string m_str;
     Tokenizer m_tokenizer;
     ShuntingYard m_shuntingYard;
+
+    std::string m_str;
     std::vector<std::string> m_copy_line;
 };

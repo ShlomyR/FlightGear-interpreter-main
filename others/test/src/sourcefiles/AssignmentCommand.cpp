@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <sstream>
 
 #include "../hederfiles/AssignmentCommand.hpp"
 #include "../hederfiles/MapException.hpp"
@@ -10,55 +11,58 @@
 void AssignmentCommand::DoCommand(std::vector<std::string> const&line)
 {
     if (line.size() == 3) {
-        Client::getInstance()->sendData(line,line[2]);
+        Client::getInstance()->sendData(line[0],line[2]);
     } else if (line[1] == "++") {
-        incrementOrDecrement(line[0], 1);
+        incrementOrDecrementVariable(line[0], 1);
     } else if (line[1] == "--") {
-        incrementOrDecrement(line[0], -1);
+        incrementOrDecrementVariable(line[0], -1);
     } else {
-        updateFromDB(line);
+        updateVariableFromDB(line);
     }
 }
 
-void AssignmentCommand::incrementOrDecrement(const std::string& varName, int increment) {
+void AssignmentCommand::incrementOrDecrementVariable(const std::string& variableName, int increment) {
+    auto &varDoubleMap = SymbolVar::getInstance()->getMapDouble();
     try {
-        if (SymbolVar::getInstance()->getMapDouble().count(varName)) {
-            int tempIncrement = SymbolVar::getInstance()->getMapDouble().at(varName);
-            SymbolVar::getInstance()->getMapDouble().at(varName) = tempIncrement + increment;
+        if (varDoubleMap.count(variableName)) {
+            int tempIncrement = varDoubleMap.at(variableName);
+            varDoubleMap.at(variableName) = tempIncrement + increment;
         } else {
-            throw MapException("Error: " + varName + " not found in map_doubleDB.", std::string(__FILE__) + ":" + std::to_string(__LINE__));
+            throw MapException("Error: " + variableName + " not found in map_doubleDB.", std::string(__FILE__) + ":" + std::to_string(__LINE__));
         }
     } catch (const MapException& me) {
         std::cout << me.what() << " at line " << me.where() << "\n";
     }
 }
 
-void AssignmentCommand::updateFromDB(std::vector<std::string> const&line)
+void AssignmentCommand::updateVariableFromDB(std::vector<std::string> const&line)
 {
     updateValuesFromDB(line);
     double infix = shuntingYard();
-    Client::getInstance()->sendData(line,infix);
+    Client::getInstance()->sendData(line[0],infix);
 }
 
 void AssignmentCommand::updateValuesFromDB(std::vector<std::string> const&line)
 {
     m_copy_line = line;
-    double d = 0.0;
+    const auto &varDoubleMap = SymbolVar::getInstance()->getMapDouble();
+    const auto &varStringMap = SymbolVar::getInstance()->getMapStr();
 
-    for (size_t i = 0; i < line.size(); i++) {
-        for (size_t j = 0; j < SymbolVar::getInstance()->getVecAllVars().size(); j++) {
-            if (line[i] == SymbolVar::getInstance()->getVecAllVars()[j] && line[0] != SymbolVar::getInstance()->getVecAllVars()[j]) {
-                try {
-                    if (SymbolVar::getInstance()->getMapDouble().count(SymbolVar::getInstance()->getMapStr().at(m_copy_line[i]))) {
-                        d = SymbolVar::getInstance()->getMapDouble().at(SymbolVar::getInstance()->getMapStr().at(m_copy_line[i]));
-                    } else {
-                        throw MapException("Error: " + m_copy_line[i] + " not found in map_doubleDB.", std::string(__FILE__) + ":" + std::to_string(__LINE__));
-                    }
-                } catch (const MapException& me) {
-                    std::cout << me.what() << " at line " << me.where() << "\n";
+    for (size_t i = 2; i < line.size(); i++) {
+        try {       
+            auto it = varStringMap.find(line[i]);
+            if (it != varStringMap.end()) {
+                auto jt = varDoubleMap.find(it->second);
+                if (jt != varDoubleMap.end()) {
+                    m_copy_line[i] = std::to_string(jt->second);
+                } else {
+                    throw MapException("Error: " + it->second + " not found in map_doubleDB.", std::string(__FILE__) + ":" + std::to_string(__LINE__));
                 }
-                m_copy_line[i] = std::to_string(d);
+            } else {
+                throw MapException("Error: " + line[i] + " not found in map_strDB.", std::string(__FILE__) + ":" + std::to_string(__LINE__));
             }
+        } catch (const MapException& me) {
+            std::cout << me.what() << " at line " << me.where() << "\n";
         }
     }
 }
@@ -76,9 +80,9 @@ double AssignmentCommand::shuntingYard()
 
 std::string AssignmentCommand::inputString()
 {
-    m_str = "";
+    std::stringstream ss;
     for (size_t j = 0; j < m_copy_line.size() - 2; j++) {
-        m_str += m_copy_line[j + 2];
+        ss << m_copy_line[j + 2];
     }
-    return m_str;
+    return ss.str();
 }
