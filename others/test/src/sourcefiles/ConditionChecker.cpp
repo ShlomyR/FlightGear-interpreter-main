@@ -7,6 +7,13 @@
 #include "../hederfiles/ConditionChecker.hpp"
 #include "../hederfiles/SymbolVar.hpp"
 
+
+ConditionChecker::ConditionChecker()
+: m_whileCommand()
+{
+    initMap();
+}
+
 bool ConditionChecker::isNumber(const std::string &str) 
 {
     auto it = std::find_if_not(str.begin(), str.end(), ::isdigit);
@@ -37,21 +44,11 @@ bool ConditionChecker::check(const std::vector<std::string>& line)
 
 bool ConditionChecker::checkComparison(const double lhs, const std::string &op, const double rhs)
 {
-    if (op == "<") {
-        return lhs < rhs;
-    } else if (op == ">") {
-        return lhs > rhs;
-    } else if (op == "==") {
-        return lhs == rhs;
-    } else if (op == "<=") {
-        return lhs <= rhs;
-    } else if (op == ">=") {
-        return lhs >= rhs;
-    } else if (op == "!=") {
-        return lhs != rhs;
-    } else {
+    if (m_comparison_map.find(op) == m_comparison_map.end()) {
         throw std::invalid_argument("Unknown comparison operator");
     }
+
+    return (this->*m_comparison_map[op])(lhs, rhs);
 }
 
 bool ConditionChecker::checkStringNumberComparison(const std::vector<std::string> &line, const std::string &op, const double rhs)
@@ -75,4 +72,46 @@ bool ConditionChecker::checkStringComparison(const std::string &lhs, const std::
 bool ConditionChecker::checkNumberComparison(const double lhs, const std::string &op, const double rhs)
 {
     return checkComparison(lhs, op, rhs);
+}
+
+bool ConditionChecker::less_than(double lhs, double rhs)
+{
+    return lhs < rhs;
+}
+
+bool ConditionChecker::greater_than(double lhs, double rhs)
+{
+    return lhs > rhs;
+}
+
+bool ConditionChecker::equal_to(double lhs, double rhs)
+{
+    return lhs == rhs;
+}
+
+bool ConditionChecker::less_than_or_equal_to(double lhs, double rhs)
+{
+    return lhs <= rhs;
+}
+
+bool ConditionChecker::greater_than_or_equal_to(double lhs, double rhs)
+{
+    return lhs >= rhs;
+}
+
+bool ConditionChecker::not_equal_to(double lhs, double rhs)
+{
+    return lhs != rhs;
+}
+
+void ConditionChecker::initMap()
+{
+    m_comparison_map = {
+        {"<", &ConditionChecker::less_than},
+        {">", &ConditionChecker::greater_than},
+        {"==", &ConditionChecker::equal_to},
+        {"<=", &ConditionChecker::less_than_or_equal_to},
+        {">=", &ConditionChecker::greater_than_or_equal_to},
+        {"!=", &ConditionChecker::not_equal_to}
+    };
 }
