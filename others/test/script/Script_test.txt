@@ -10,7 +10,29 @@ while a < b
     sleep 1
 }
 
-print "First while loop done"
+print "---------------"
+
+var a = bind 20
+var b = bind 22
+while a != b
+{
+    print " { b -- } "
+    sleep 1
+}
+
+print "---------------"
+
+var a = bind 20
+var b = bind 15
+
+print "----First------"
+while a >= b
+{
+    print " { a -- } "
+    sleep 1
+}
+
+print "---------------"
 
 while a < 22
 {
@@ -18,7 +40,7 @@ while a < 22
     sleep 1
 }
 
-print "Second while loop done"
+print "---------------"
 
 while 20 < c
 {
@@ -26,7 +48,7 @@ while 20 < c
     sleep 1
 }
 
-print "Third while loop done"
+print "---------------"
 
 while 20 < 30
 {
@@ -34,12 +56,12 @@ while 20 < 30
     sleep 1
 }
 
-print "Fourth while loop done"
+print "---------------"
 
 if 20 > 10
 {
-    print 20
+    print "20"
     sleep 1
 }
 
-print "First if done"
+print "---------------"

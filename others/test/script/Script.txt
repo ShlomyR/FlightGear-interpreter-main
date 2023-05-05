@@ -43,7 +43,7 @@ breaks = 0
 sleep 5
 throttle = 1
 
-while alt < 10
+while alt < 1000
 {
     rudder = ( h0 - heading ) / 20
     aileron = - roll / 70
@@ -54,7 +54,7 @@ while alt < 10
 
 print "First while loop done"
 
-while alt < 100
+while alt < 1500
 {
     rudder = ( h0 - heading ) / 20
     aileron = - roll / 70
