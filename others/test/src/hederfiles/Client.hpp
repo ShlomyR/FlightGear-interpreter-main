@@ -12,7 +12,7 @@ class Client {
 public:
     static Client* getInstance();
     void connect(const int port, const char* ip);
-    void sendData(std::vector<std::string> const& line,  const std::variant<double, std::string> data);
+    void sendData(const std::string ,  const std::variant<double, std::string>);
     void testConnection();
 
 private:

@@ -36,15 +36,17 @@ void Client::connect(const int port, const char* ip) {
     }
 }
 
-void Client::sendData(std::vector<std::string> const& line, const std::variant<double, std::string> data) {
+void Client::sendData(const std::string word, const std::variant<double, std::string> data) {
     std::string message;
+    const auto &varDoubleMap = SymbolVar::getInstance()->getMapDouble();
+    const auto &varStringMap = SymbolVar::getInstance()->getMapStr();
     try {
-        if (SymbolVar::getInstance()->getMapStr().count(line[0])) {
-            message += m_set + " " + SymbolVar::getInstance()->getMapStr().at(line[0]) + " ";
-        } else if (SymbolVar::getInstance()->getMapDouble().count(line[0])) {
-            message += m_set + " " + SymbolVar::getInstance()->getMapDouble().find(line[0])->first + " ";
+        if (varStringMap.count(word)) {
+            message += m_set + " " + varStringMap.at(word) + " ";
+        } else if (varDoubleMap.count(word)) {
+            message += m_set + " " + varDoubleMap.find(word)->first + " ";
         } else {
-            throw MapException("Error: " + line[0] + " not found in map_strDB and in map_doubleDB.", std::string(__FILE__) + ":" + std::to_string(__LINE__));
+            throw MapException("Error: " + word + " not found in map_strDB and in map_doubleDB.", std::string(__FILE__) + ":" + std::to_string(__LINE__));
         }
     } catch (const MapException& me) {
         std::cout << me.what() << " at line " << me.where() << "\n";
