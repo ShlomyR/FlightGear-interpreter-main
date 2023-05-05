@@ -3,11 +3,10 @@
 #include <string>
 #include <vector>
 
-#include "BlockParser.hxx"
+#include "BlockParser.hpp"
 
 class LinesBlockParser : public BlockParser
 {
 public:
     void parse(std::vector<std::vector<std::string>> &lines) override;
-    void reserve_block_type(std::vector<std::vector<std::string>> &lines, const std::string blockTyp) override;
 };

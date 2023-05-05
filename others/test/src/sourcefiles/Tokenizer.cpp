@@ -27,9 +27,8 @@ std::vector<std::shared_ptr<Token>> Tokenizer::tokenize(const std::string& input
     std::vector<std::shared_ptr<Token>> tokens;
     std::stringstream ss(input);
 
-        char c;
-        while (ss >> c) {
-
+    char c;
+    while (ss >> c) {
         if (isdigit(c)) {
             ss.putback(c);
             double value;
@@ -45,7 +44,6 @@ std::vector<std::shared_ptr<Token>> Tokenizer::tokenize(const std::string& input
             throw std::invalid_argument("Invalid character in input");
         }
     }
-    
     printVector(tokens);
     return tokens;
 }

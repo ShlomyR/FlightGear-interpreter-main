@@ -1,13 +1,14 @@
-#include <sstream>
-#include <fstream>
 #include <iostream>
 
 #include "../hederfiles/WhileBlockParser.hpp"
 #include "../hederfiles/LinesBlockParser.hpp"
 #include "../hederfiles/IfBlockParser.hpp"
+#include "../hederfiles/BlockParser.hpp"
+#include "../hederfiles/FileReader.hpp"
 #include "../hederfiles/Lexer.hpp"
 
 std::vector<std::vector<std::vector<std::string>>> Lexer::m_while_blocks;
+std::vector<std::vector<std::vector<std::string>>> Lexer::m_lines_blocks;
 std::vector<std::vector<std::vector<std::string>>> Lexer::m_if_blocks;
 
 std::vector<std::vector<std::vector<std::string>>> &Lexer::get_while_blocks()
@@ -15,74 +16,43 @@ std::vector<std::vector<std::vector<std::string>>> &Lexer::get_while_blocks()
     return m_while_blocks;
 }
 
+std::vector<std::vector<std::vector<std::string>>> &Lexer::get_lines_blocks()
+{
+    return m_lines_blocks;
+}
+
 std::vector<std::vector<std::vector<std::string>>> &Lexer::get_if_blocks()
 {
     return m_if_blocks;
 }
 
-Lexer::Lexer(FileReader &fileReader, std::string &src)
-: m_fileReader(fileReader)
+Lexer::Lexer(std::string &src)
+: m_fileReader()
 , m_src(src)
-{
-    auto while_blocks = tokenize_file("while");
-    auto if_blocks = tokenize_file("if");
-}
+{}
 
 std::vector<std::vector<std::string>> Lexer::read_file_contents()
 {
-    std::vector<std::vector<std::string>> lines;
-    m_program.open(m_src);
-    
-    if (!m_program.is_open()) {
-        throw std::runtime_error("file not opened in lexer\n");
-    }
-
-    std::string line;
-    while (std::getline(m_program, line)) {
-        std::vector<std::string> tokens;
-        std::istringstream iss(line);
-        for (std::string token; iss >> token;) {
-            if (line.size() > 0) {
-                tokens.push_back(token);
-            }
-        }
-        if (tokens.size() > 0) {
-            lines.push_back(tokens);
-        }
-    }
-    m_program.close();
-
-    return lines;
+    return m_fileReader.read_file<std::vector<std::vector<std::string>>>(m_src);
 }
 
-void Lexer::process_blocks(std::vector<std::vector<std::string>>& lines, const std::string blockName)
+void Lexer::process_blocks()
 {
+    std::vector<std::vector<std::string>> lines;
     for (const auto &[blockType, parser] : m_blockParsers) {
-        if (blockType == blockName) {
-            parser->parse(lines);
-        }
-        if (blockType == "while") {
-            // m_while_blocks.push_back(lines);
-        } else if (blockType == "if") {
-            // m_if_blocks.push_back(lines);
-        } else if (blockType == " ") {
-            m_lines_blocks.push_back(lines);
-        } else {
-            throw std::runtime_error("Unknown block type: " + blockType);
-        }
+        lines = read_file_contents();
+        parser->parse(lines);
+        print_vector(lines, blockType);
     }
 }
 
-std::vector<std::vector<std::string>> Lexer::tokenize_file(const std::string &blockName)
+std::vector<std::vector<std::string>> Lexer::tokenize_file()
 {
     register_block_parser("while", std::make_unique<WhileBlockParser>());
     register_block_parser("if", std::make_unique<IfBlockParser>());
-    register_block_parser(" ", std::make_unique<LinesBlockParser>());
-
-    std::vector<std::vector<std::string>> lines = read_file_contents();
-    process_blocks(lines, blockName);
-    print_vector(lines);
-    return lines;
+    register_block_parser("all_lines", std::make_unique<LinesBlockParser>());
+    process_blocks();
+    return m_lines_blocks[0];
 }
 
 void Lexer::register_block_parser(const std::string &block_type, std::shared_ptr<BlockParser> parser)
@@ -90,8 +60,9 @@ void Lexer::register_block_parser(const std::string &block_type, std::shared_ptr
     m_blockParsers[block_type] = std::move(parser);
 }
 
-void Lexer::print_vector(const std::vector<std::vector<std::string>>& vec) {
-    std::cout << "\n" << "Print type: " << vec[0][0] << "\n" << "\n";
+void Lexer::print_vector(const std::vector<std::vector<std::string>>& vec, const std::string &blockType)
+{
+    std::cout << "\n" << "Print type: " << blockType << "\n" << "\n";
     for (std::string::size_type i = 0; i < vec.size(); i++) {
         std::cout << "[";
         for (std::string::size_type j = 0; j < vec[i].size(); j++) {

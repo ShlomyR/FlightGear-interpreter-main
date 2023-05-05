@@ -10,28 +10,3 @@ void Parse::parse(std::vector<std::vector<std::string>> &lines)
         }
     }
 }
-
-// Parse::m_index +=
-
-// size_t Parse::m_index;
-
-
-// std::string::size_type Parse::getIndex()
-// {
-//     return m_index;
-// }
-
-// void Parse::incrementIndex()
-// {
-//     m_index++;
-// }
-
-// void Parse::resetIndex()
-// {
-//     m_index = 0;
-// }
-
-// void Parse::setIndex(int i)
-// {
-//     m_index = i;
-// }

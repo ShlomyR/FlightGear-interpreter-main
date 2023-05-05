@@ -14,9 +14,14 @@ void BreakCommand::DoCommand(std::vector<std::string> const&line)
 
 void BreakCommand::breakFunc(std::vector<std::string> const&)
 {
-    if ( SymbolVar::getInstance()->getMapStr().count("breakLoop")) {
-        SymbolVar::getInstance()->getMapStr().at("breakLoop") = "true";
-    } else {
-        throw MapException("Error: " + std::string("breakLoop") + " not found in map_strDB.", std::string(__FILE__) + ":" + std::to_string(__LINE__));
+    auto &varStringMap = SymbolVar::getInstance()->getMapStr();
+    try {
+        if ( varStringMap.count("breakLoop")) {
+            varStringMap.at("breakLoop") = "true";
+        } else {
+            throw MapException("Error: " + std::string("breakLoop") + " not found in map_strDB.", std::string(__FILE__) + ":" + std::to_string(__LINE__));
+        }
+    } catch (const MapException& me) {
+        std::cout << me.what() << " at line " << me.where() << "\n";
     }
 }

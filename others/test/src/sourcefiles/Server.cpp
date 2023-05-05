@@ -6,6 +6,7 @@
 
 #include <string.h>
 #include <vector>
+#include <memory>
 
 #include "../hederfiles/FlightGear.hpp"
 #include "../hederfiles/SymbolVar.hpp"
@@ -25,44 +26,14 @@ Server::~Server()
     }
     if (t2.joinable()) {
         t2.detach();
-    }
-    
+    }   
 }
 
-int Server::connectServer()
+int Server::connectServer(std::shared_ptr<ConnectionHandler> handler)
 {
     makeBindArray();
-    tcpConnection();
-
+    handler->handleConnection();
     return 0;
-}
-
-void Server::tcpConnection()
-{
-    if (!TcpServer::getInstance()->socket()) {
-        std::cerr << "Failed to create socket\n";
-    }
-
-    if (!TcpServer::getInstance()->bind()) {
-        std::cerr << "Failed to bind to port " << TcpServer::getInstance()->getPort() << "\n";
-    }
-
-    if (!TcpServer::getInstance()->listen(10)) {
-        std::cerr << "Failed to listen on socket\n";
-    }
-
-    printf("Waiting for connection\n");
-
-    Server::getInstance()->t1 = std::thread([](){ FlightGear::getInstance()->open(); });
-    
-    if (!TcpServer::getInstance()->accept()) {
-        std::cerr << "Failed to accept connection\n";
-    }
-   
-    printf("Connecting...\n");
-
-    
-    Server::getInstance()->t2  = std::thread(runServerDB);
 }
 
 void Server::runServerDB() 
@@ -106,6 +77,15 @@ std::vector<double> Server::getValVector(std::string str)
     return vector;
 }
 
+bool Server::trySecondTime()
+{
+    std::cout << "Retrying connection in 10 seconds...\n";
+    std::this_thread::sleep_for(std::chrono::seconds(10));
+    TcpServer::getInstance()->close();
+    TcpServer::getInstance()->socket();
+    return TcpServer::getInstance()->bind();
+}
+
 void Server::makeBindArray()
 {
     bind_arr[airspeed] = "/instrumentation/airspeed-indicator/indicated-speed-kt";
@@ -145,4 +125,3 @@ void Server::makeBindArray()
     bind_arr[master_alt] = "/controls/switches/master-alt";
     bind_arr[engine_rpm] = "/engines/engine/rpm";
 }
-

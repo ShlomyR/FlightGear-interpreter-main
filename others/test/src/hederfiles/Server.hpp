@@ -3,13 +3,26 @@
 #include <string>
 #include <vector>
 #include <thread>
+#include <memory>
+
+#include "ConnectionHandler.hxx"
 
 class Server
 {
 public:
-    static Server* getInstance();
-    int connectServer();
     ~Server();
+    static Server* getInstance();
+    int connectServer(std::shared_ptr<ConnectionHandler> handler);
+    static void runServerDB();
+    bool trySecondTime();
+    std::thread &getThread_1()
+    {
+        return t1;
+    }
+    std::thread &getThread_2()
+    {
+        return t2;
+    }
 private:
     Server() {}
     Server(const Server&) = delete;
@@ -17,7 +30,6 @@ private:
 
     std::string readData(std::string const);
     std::vector<double> getValVector(std::string);
-    static void runServerDB();
     void makeBindArray();
     void tcpConnection();
 private:
