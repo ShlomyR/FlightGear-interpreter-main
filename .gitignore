@@ -8,6 +8,7 @@ main.cpp
 !others/test/main.cpp
 test.cpp
 MyClass.hpp
+testing.cpp
 .txt
 
 Makefile
