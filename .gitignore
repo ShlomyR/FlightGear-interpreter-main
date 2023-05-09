@@ -17,6 +17,7 @@ script/
 !others/test/script
 
 /bin
+/testing
 /others/test/bin
 others/version_0.1
 others/version_0.2
