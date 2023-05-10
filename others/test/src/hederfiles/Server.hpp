@@ -5,33 +5,26 @@
 #include <thread>
 #include <memory>
 
-#include "ConnectionHandler.hxx"
+#include "../hederfiles/Interfaces/ConnectionHandler.hxx"
 
 class Server
 {
 public:
     ~Server();
     static Server* getInstance();
-    int connectServer(std::shared_ptr<ConnectionHandler> handler);
+    int connectServer(std::shared_ptr<ConnectionHandler> );
     static void runServerDB();
     bool trySecondTime();
-    std::thread &getThread_1()
-    {
-        return t1;
-    }
-    std::thread &getThread_2()
-    {
-        return t2;
-    }
+    std::thread &openFlightGearThread();
+    std::thread &runServerDBThread();
 private:
-    Server() {}
+    Server() = default;
     Server(const Server&) = delete;
     Server& operator=(const Server&) = delete;
 
     std::string readData(std::string const);
     std::vector<double> getValVector(std::string);
     void makeBindArray();
-    void tcpConnection();
 private:
     std::thread t1;
     std::thread t2;

@@ -86,6 +86,16 @@ bool Server::trySecondTime()
     return TcpServer::getInstance()->bind();
 }
 
+std::thread &Server::openFlightGearThread()
+{
+    return t1;
+}
+
+std::thread &Server::runServerDBThread()
+{
+    return t2;
+}
+
 void Server::makeBindArray()
 {
     bind_arr[airspeed] = "/instrumentation/airspeed-indicator/indicated-speed-kt";

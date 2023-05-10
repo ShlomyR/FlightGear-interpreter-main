@@ -21,12 +21,12 @@ void SingleConnectionHandler::handleConnection()
 
     std::cout << "Waiting for connection\n";
 
-    Server::getInstance()->getThread_1() = std::thread([](){ FlightGear::getInstance()->open(); });
+    Server::getInstance()->openFlightGearThread() = std::thread([](){ FlightGear::getInstance()->open(); });
     
     if (!TcpServer::getInstance()->accept()) {
         std::cerr << "Failed to accept connection\n";
     } else {
         std::cout << "Connecting...\n";
-        Server::getInstance()->getThread_2()  = std::thread([](){ Server::getInstance()->runServerDB(); });
+        Server::getInstance()->runServerDBThread()  = std::thread([](){ Server::getInstance()->runServerDB(); });
     }
 }

@@ -1,9 +1,9 @@
 #include <iostream>
 
-#include "../hederfiles/WhileBlockParser.hpp"
-#include "../hederfiles/LinesBlockParser.hpp"
-#include "../hederfiles/IfBlockParser.hpp"
-#include "../hederfiles/BlockParser.hpp"
+#include "../hederfiles/Parser/WhileBlockParser.hpp"
+#include "../hederfiles/Parser/LinesBlockParser.hpp"
+#include "../hederfiles/Parser/IfBlockParser.hpp"
+#include "../hederfiles/Parser/BlockParser.hpp"
 #include "../hederfiles/FileReader.hpp"
 #include "../hederfiles/Lexer.hpp"
 

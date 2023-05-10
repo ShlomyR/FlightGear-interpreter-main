@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <iostream>
 
-#include "../hederfiles/WhileCommand.hpp"
+#include "../hederfiles/Commands/WhileCommand.hpp"
 #include "../hederfiles/ConditionChecker.hpp"
 #include "../hederfiles/SymbolVar.hpp"
 

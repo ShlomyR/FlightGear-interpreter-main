@@ -7,13 +7,13 @@
 #include <fstream>
 
 
-#include "BlockParser.hpp"
+#include "../hederfiles/Parser/BlockParser.hpp"
 #include "FileReader.hpp"
 
 class Lexer
 {
 public:
-    Lexer(std::string &src);
+    Lexer(std::string &);
     std::vector<std::vector<std::string>> tokenize_file();
     static std::vector<std::vector<std::vector<std::string>>>& get_while_blocks();
     static std::vector<std::vector<std::vector<std::string>>>& get_lines_blocks();
@@ -21,8 +21,8 @@ public:
 private:
     std::vector<std::vector<std::string>> read_file_contents();
     void process_blocks();
-    void register_block_parser(const std::string &block_type, std::shared_ptr<BlockParser> parser);
-    void print_vector(const std::vector<std::vector<std::string>>& vec, const std::string &blockType);
+    void register_block_parser(const std::string &, std::shared_ptr<BlockParser> );
+    void print_vector(const std::vector<std::vector<std::string>> &, const std::string &);
 private:
     FileReader m_fileReader;
     std::ifstream m_program;

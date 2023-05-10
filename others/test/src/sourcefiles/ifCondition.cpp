@@ -4,9 +4,9 @@
 // #include "Lexer.hpp"
 
 #include "../hederfiles/ConditionChecker.hpp"
+#include "../hederfiles/Parser/Parse.hpp"
 #include "../hederfiles/LinesPointer.hpp"
 #include "../hederfiles/ifCondition.hpp"
-#include "../hederfiles/Parse.hpp"
 #include "../hederfiles/Lexer.hpp"
 
 
@@ -25,7 +25,7 @@ void ifCondition::ifCon(std::vector<std::string> const&line)
     }
 
     tmp_lines_ptr += if_block.size();
-    printf("\nifCon Parser finished\n");
+    std::cout << "\nifCon Parser finished\n";
 
     Lexer::get_if_blocks().erase(Lexer::get_if_blocks().begin());
     LinesPointer::setIndex(tmp_lines_ptr);

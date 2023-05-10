@@ -1,9 +1,9 @@
 #include "../hederfiles/ConditionChecker.hpp"
+#include "../hederfiles/Parser/Parse.hpp"
 #include "../hederfiles/LinesPointer.hpp"
 #include "../hederfiles/MapException.hpp"
 #include "../hederfiles/SymbolVar.hpp"
 #include "../hederfiles/WhileLoop.hpp"
-#include "../hederfiles/Parse.hpp"
 #include "../hederfiles/Lexer.hpp"
 
 #include <iostream>

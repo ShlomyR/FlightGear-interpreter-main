@@ -2,9 +2,10 @@
 
 #include <string>
 
-#include "IDataSender.hxx"
+#include "../hederfiles/Interfaces/IDataSender.hxx"
 
-class DataSender : public IDataSender {
+class DataSender : public IDataSender 
+{
 public:
-    void sendData(std::string const& msg) override;
+    void sendData(std::string const &) override;
 };
