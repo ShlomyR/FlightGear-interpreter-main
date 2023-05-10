@@ -1,6 +1,6 @@
+#include "src/hederfiles/Parser/Parse.hpp"
 #include "src/hederfiles/FlightGear.hpp"
 #include "src/hederfiles/Lexer.hpp"
-#include "src/hederfiles/Parse.hpp"
 
 #define PATH "script/Script.txt"
 
