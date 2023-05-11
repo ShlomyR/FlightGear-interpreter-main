@@ -62,10 +62,10 @@ void Lexer::register_block_parser(const std::string &block_type, std::shared_ptr
 
 void Lexer::print_vector(const std::vector<std::vector<std::string>>& vec, const std::string &blockType)
 {
-    std::cout << "\n" << "Print type: " << blockType << "\n" << "\n";
-    for (std::string::size_type i = 0; i < vec.size(); i++) {
+    std::cout << "\n" << "Print type: " << blockType << "\n\n";
+    for (size_t i = 0; i < vec.size(); i++) {
         std::cout << "[";
-        for (std::string::size_type j = 0; j < vec[i].size(); j++) {
+        for (size_t j = 0; j < vec[i].size(); j++) {
             std::cout << vec[i][j] << " ";
         }
         std::cout << "]" << "\n";
