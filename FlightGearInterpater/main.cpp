@@ -1,6 +1,6 @@
-#include "Parse.hpp"
 #include "FlightGear.hpp"
 #include "Lexer.hpp"
+#include "Parse.hpp"
 
 #define PATH "scripts/Script.txt"
 

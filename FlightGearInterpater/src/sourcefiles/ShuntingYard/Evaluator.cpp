@@ -1,4 +1,11 @@
 #include "Evaluator.hpp"
+#include "Multiply.hpp"
+#include "Divide.hpp"
+#include "Modulo.hpp"
+#include "Modulo.hpp"
+#include "Power.hpp"
+#include "Pluse.hpp"
+#include "Minus.hpp"
 
 #include <iostream>
 #include <memory>

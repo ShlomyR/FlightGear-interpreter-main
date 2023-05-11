@@ -1,4 +1,13 @@
 #include "CommandFactory.hpp"
+#include "AssignmentCommand.hpp"
+#include "OpenServerCommand.hpp"
+#include "ConnectCommand.hpp"
+#include "WhileCommand.hpp"
+#include "SleepCommand.hpp"
+#include "PrintCommand.hpp"
+#include "BreakCommand.hpp"
+#include "VerCommand.hpp"
+#include "IfCommand.hpp"
 
 #include <string>
 #include <vector>

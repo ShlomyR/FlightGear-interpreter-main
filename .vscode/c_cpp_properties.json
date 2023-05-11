@@ -4,7 +4,9 @@
             "name": "Linux",
             "compilerPathInCppPropertiesJson": "/usr/bin/gcc",
             "includePath": [
-                "/home/shlomy/Desktop/FlightGear-interpreter-main/**"
+                "/home/shlomy/Desktop/FlightGear-interpreter-main/**",
+                "${workspaceFolder}/FlightGearInterpater/src/hederfiles/Expressions/ArithmeticExpression",
+                "${workspaceFolder}/FlightGearInterpater/src/hederfiles/Commands"
             ],
             "defines": [],
             "cStandard": "c17",

@@ -3,13 +3,6 @@
 #include "OutputQueue.hpp"
 #include "NumberExpr.hpp"
 #include "Expression.hxx"
-#include "Multiply.hpp"
-#include "Divide.hpp"
-#include "Modulo.hpp"
-#include "Modulo.hpp"
-#include "Power.hpp"
-#include "Pluse.hpp"
-#include "Minus.hpp"
 #include "Token.hxx"
 
 #include <memory>
