@@ -5,24 +5,22 @@ main
 
 ff.cpp
 main.cpp
-!others/test/main.cpp
+!FlightGearInterpater/main.cpp
+
 test.cpp
 MyClass.hpp
 testing.cpp
 .txt
 
 Makefile
-!others/test/Makefile
+!FlightGearInterpater/Makefile
 
 script/
-!others/test/script
 
 /bin
 /testing
-/others/test/bin
-others/version_0.1
-others/version_0.2
-others/12-expressions
+/FlightGearInterpater/bin
+FlightGearInterpater/12-expressions
 
 # Prerequisites
 *.d
