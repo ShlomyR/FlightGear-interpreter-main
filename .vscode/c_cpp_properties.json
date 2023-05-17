@@ -6,7 +6,13 @@
             "includePath": [
                 "/home/shlomy/Desktop/FlightGear-interpreter-main/**",
                 "${workspaceFolder}/FlightGearInterpater/src/hederfiles/Expressions/ArithmeticExpression",
-                "${workspaceFolder}/FlightGearInterpater/src/hederfiles/Commands"
+                "${workspaceFolder}/FlightGearInterpater/src/hederfiles/Commands",
+                "${workspaceFolder}/FlightGearInterpater/src/hederfiles",
+                "${workspaceFolder}/FlightGearInterpater/src/hederfiles/Parser",
+                "${workspaceFolder}/FlightGearInterpater/src/hederfiles/Interfaces",
+                "${workspaceFolder}/FlightGearInterpater/src/hederfiles/ShuntingYard",
+                "${workspaceFolder}/FlightGearInterpater/src/hederfiles/Token",
+                "${workspaceFolder}/FlightGearInterpater/src/hederfiles/Expressions"
             ],
             "defines": [],
             "cStandard": "c17",
