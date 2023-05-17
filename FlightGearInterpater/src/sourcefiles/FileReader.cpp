@@ -22,7 +22,7 @@ std::vector<std::vector<std::string>> FileReader::read_file<std::vector<std::vec
     m_program.open(filename);
     
     if (!m_program.is_open()) {
-        throw std::runtime_error("file not opened in VvcFileReader, file:" + filename + "\n");
+        throw std::runtime_error("file not opened in vvsFileReader, file: " + filename + "\n");
     }
 
     std::string line;
