@@ -42,7 +42,9 @@ void Lexer::process_blocks()
     for (const auto &[blockType, parser] : m_blockParsers) {
         lines = read_file_contents();
         parser->parse(lines);
-        print_vector(lines, blockType);
+        if (!lines.empty()) {
+            print_vector(lines, blockType);
+        }
     }
 }
 
