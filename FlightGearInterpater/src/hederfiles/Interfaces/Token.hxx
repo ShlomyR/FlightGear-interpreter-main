@@ -4,7 +4,6 @@ class Token
 {
 public:
     virtual ~Token() = default;
-    
     virtual bool isOperator() const = 0;
     virtual bool isNumber() const = 0;
     virtual bool isParenthesis() const = 0;
