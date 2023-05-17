@@ -6,6 +6,6 @@
 class Parser
 {
 public:
-    ~Parser() = default;
+    virtual ~Parser() = default;
     virtual void parse(std::vector<std::vector<std::string>> &) = 0;
 };
