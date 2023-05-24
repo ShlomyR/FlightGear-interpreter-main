@@ -1,4 +1,4 @@
-# FlightGear-Interpeter
+# FlightGear-Interpreter
 
 this is a learning project of c++ from scratch and OOP and command pattern.
 
