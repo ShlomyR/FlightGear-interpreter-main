@@ -5,7 +5,7 @@ main
 
 ff.cpp
 main.cpp
-!FlightGearInterpater/main.cpp
+!FlightGearInterpreter/main.cpp
 
 test.cpp
 MyClass.hpp
@@ -13,14 +13,14 @@ testing.cpp
 .txt
 
 Makefile
-!FlightGearInterpater/Makefile
+!FlightGearInterpreter/Makefile
 
 script/
 
 /bin
 /testing
-/FlightGearInterpater/bin
-FlightGearInterpater/12-expressions
+/FlightGearInterpreter/bin
+/FlightGearInterpreter/12-expressions
 
 # Prerequisites
 *.d
